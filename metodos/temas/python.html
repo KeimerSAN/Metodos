@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introducci&oacute;n a Python para m&eacute;todos num&eacute;ricos | M&eacute;todos Num&eacute;ricos</title>
+<meta name="description" content="Python, NumPy, SciPy y Matplotlib aplicados a metodos numericos: sintaxis esencial, biseccion implementada y ejercicios de programacion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=18">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- ===================== CABECERA ===================== -->
+  <header class="site-header" id="top">
+
+    <!-- Fila 1: barra de utilidades -->
+    <div class="masthead-utility">
+      <div class="masthead-utility-inner">
+        <span class="masthead-course">Aula interactiva &middot; Ingenier&iacute;a de Sistemas</span>
+        <span class="masthead-links">
+          <a href="../manual.html">Manual</a>
+          <a href="../proyecto.html">Proyecto</a>
+          <a href="../index.php#contacto">Contacto</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- Fila 2: mancheta con la marca centrada -->
+    <div class="masthead">
+      <a href="../index.php#inicio" class="masthead-brand" aria-label="Inicio &mdash; M&eacute;todos Num&eacute;ricos">
+        <span class="masthead-rule" aria-hidden="true"></span>
+        <span class="masthead-name">M&eacute;todos<em>Num&eacute;ricos</em></span>
+        <span class="masthead-rule" aria-hidden="true"></span>
+      </a>
+      <p class="masthead-tagline">Fundamentos y errores &middot; M&eacute;todos iterativos &middot; Ecuaciones diferenciales</p>
+    </div>
+
+    <!-- Fila 3: navegación principal (queda fija al hacer scroll) -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a href="../index.php#inicio" class="navbar-compact" aria-hidden="true" tabindex="-1">M&eacute;todos<em>Num&eacute;ricos</em></a>
+
+        <nav class="main-nav" id="mainNav" aria-label="Navegaci&oacute;n principal">
+          <a href="../index.php#inicio">Inicio</a>
+          <div class="nav-dropdown" id="temasDropdown">
+            <button class="nav-dropdown-toggle" id="temasDropdownToggle" aria-expanded="false">
+              Temas
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          <div class="nav-dropdown-menu nav-mega">
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 1 <em>Fundamentos y Teor&iacute;a de Errores</em></span>
+              <a href="metodo-numerico.html"><span class="tag-num">1.1</span> &iquest;Qu&eacute; es un m&eacute;todo num&eacute;rico?</a>
+              <a href="representacion.html"><span class="tag-num">1.2</span> Representaci&oacute;n de n&uacute;meros</a>
+              <a href="punto-flotante.html"><span class="tag-num">1.3</span> Aritm&eacute;tica de punto flotante</a>
+              <a href="errores.html"><span class="tag-num">1.4</span> Errores de redondeo</a>
+              <a href="algoritmos-convergencia.html"><span class="tag-num">1.5</span> Algoritmos y convergencia</a>
+              <a href="python.html" class="is-current" aria-current="page"><span class="tag-num">1.6</span> Python para m&eacute;todos num&eacute;ricos</a>
+            </div>
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 2 <em>M&eacute;todos Iterativos y Ra&iacute;ces de Funciones</em></span>
+              <a href="solucion-numerica.html"><span class="tag-num">2.1</span> Soluci&oacute;n num&eacute;rica</a>
+              <a href="convergencia.html"><span class="tag-num">2.2</span> Tasas de convergencia</a>
+              <a href="biseccion.html"><span class="tag-num">2.3</span> M&eacute;todo de bisecci&oacute;n</a>
+              <a href="puntofijo.html"><span class="tag-num">2.4</span> Iteraci&oacute;n de punto fijo</a>
+              <a href="newton.html"><span class="tag-num">2.5</span> M&eacute;todo de Newton</a>
+              <a href="muller.html"><span class="tag-num">2.6</span> M&eacute;todo de Muller</a>
+            </div>
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 3 <em>Ecuaciones Diferenciales Ordinarias</em></span>
+              <a href="euler.html"><span class="tag-num">3.1</span> M&eacute;todo de Euler</a>
+              <a href="taylor.html"><span class="tag-num">3.2</span> M&eacute;todo de Taylor</a>
+              <a href="runge-kutta.html"><span class="tag-num">3.3</span> M&eacute;todo de Runge-Kutta</a>
+              <a href="multipaso.html"><span class="tag-num">3.4</span> M&eacute;todos multipaso</a>
+            </div>
+            <a href="../index.php#temas" class="nav-dropdown-all">Ver el mapa completo de los 16 temas &rarr;</a>
+          </div>
+          </div>
+          <a href="../index.php#juegos">Actividades</a>
+          <a href="../galeria.html">Galer&iacute;a</a>
+          <a href="../index.php#certificacion">Certificaci&oacute;n</a>
+          <a href="../index.php#nosotros">Acerca de</a>
+          <a href="../index.php#bibliografia">Bibliograf&iacute;a</a>
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir men&uacute;">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+<section class="detail-hero">
+  <div class="detail-hero-inner">
+    <p class="breadcrumb"><a href="../index.php#inicio">Inicio</a><span>/</span><a href="../index.php#temas">Temas</a><span>/</span>Python para m&eacute;todos num&eacute;ricos</p>
+    <h1>Introducci&oacute;n a Python para m&eacute;todos num&eacute;ricos</h1>
+    <p class="detail-lead">La herramienta con la que programaremos todo el curso: sintaxis m&iacute;nima, NumPy y una implementaci&oacute;n completa de bisecci&oacute;n comentada l&iacute;nea a l&iacute;nea.</p>
+  </div>
+</section>
+
+<main class="detail-body" id="contenido">
+  <div class="detail-layout">
+
+    <aside class="detail-aside">
+      <div class="detail-aside-inner">
+        <p class="detail-aside-title">En esta p&aacute;gina</p>
+        <nav class="detail-toc" id="detailToc" aria-label="Sumario del tema"></nav>
+        <div class="detail-aside-actions">
+          <a href="../index.php#juegos" class="detail-aside-cta">Practicar este tema</a>
+          <a href="../index.php#temas" class="detail-aside-link">Ver los 16 temas</a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="detail-main">
+
+  <h2>Idea central</h2>
+  <p>Python se ha convertido en el lenguaje est&aacute;ndar para ense&ntilde;ar y aplicar m&eacute;todos num&eacute;ricos: la sintaxis se parece al pseudoc&oacute;digo, los <code>float</code> son de doble precisi&oacute;n por defecto y las bibliotecas <strong>NumPy</strong>, <strong>SciPy</strong> y <strong>Matplotlib</strong> cubren desde el &aacute;lgebra lineal hasta la graficaci&oacute;n.</p>
+
+  <h2>Herramientas del ecosistema</h2>
+  <div class="table-wrap">
+    <table class="iter-table">
+      <thead><tr><th>Biblioteca</th><th>Para qu&eacute; sirve</th><th>Instalaci&oacute;n</th></tr></thead>
+      <tbody>
+        <tr><td><code>math</code></td><td>Funciones elementales (est&aacute; incluida en Python)</td><td>&mdash;</td></tr>
+        <tr><td><code>numpy</code></td><td>Arreglos, &aacute;lgebra lineal, operaciones vectorizadas</td><td><code>pip install numpy</code></td></tr>
+        <tr><td><code>scipy</code></td><td>Ra&iacute;ces, integraci&oacute;n, EDO, optimizaci&oacute;n</td><td><code>pip install scipy</code></td></tr>
+        <tr><td><code>matplotlib</code></td><td>Gr&aacute;ficas de funciones y de convergencia</td><td><code>pip install matplotlib</code></td></tr>
+        <tr><td><code>sympy</code></td><td>C&aacute;lculo simb&oacute;lico (derivadas exactas para Newton)</td><td><code>pip install sympy</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Lo m&iacute;nimo del lenguaje</h2>
+  <div class="code-block">
+    <div class="code-block-head">Sintaxis esencial para el curso</div>
+    <pre><code>import math
+
+# 1. Definir una funcion matematica
+def f(x):
+    return x**3 - x - 2
+
+# 2. Definir su derivada (necesaria para Newton)
+def df(x):
+    return 3*x**2 - 1
+
+# 3. Bucle con criterio de parada por tolerancia
+x, tol, max_iter = 1.5, 1e-10, 100
+for i in range(max_iter):
+    x_nuevo = x - f(x) / df(x)
+    if abs(x_nuevo - x) &lt; tol:      # nunca usar == con flotantes
+        break
+    x = x_nuevo
+
+print(f"Raiz = {x_nuevo:.10f} en {i+1} iteraciones")
+
+# 4. Funciones anonimas (lambda) para pasar f como argumento
+g = lambda x: math.cos(x)
+print(g(0))            # 1.0</code></pre>
+  </div>
+
+  <h2>Ejercicio resuelto: bisecci&oacute;n completa en Python</h2>
+  <div class="exercise-box">
+    <p>Implementaci&oacute;n con validaci&oacute;n de la condici&oacute;n inicial, tolerancia, m&aacute;ximo de iteraciones y tabla de salida.</p>
+  <div class="code-block">
+    <div class="code-block-head">biseccion.py</div>
+    <pre><code>def biseccion(f, a, b, tol=1e-8, max_iter=100, verbose=True):
+    """Devuelve una raiz de f en [a, b] por el metodo de biseccion."""
+    fa, fb = f(a), f(b)
+    if fa * fb &gt; 0:
+        raise ValueError("No hay cambio de signo en [a, b]: f(a)*f(b) &gt; 0")
+
+    if verbose:
+        print(f"{'i':&gt;3} {'a':&gt;12} {'b':&gt;12} {'c':&gt;12} {'f(c)':&gt;14}")
+
+    c = a
+    for i in range(1, max_iter + 1):
+        c = (a + b) / 2
+        fc = f(c)
+        if verbose:
+            print(f"{i:&gt;3} {a:&gt;12.6f} {b:&gt;12.6f} {c:&gt;12.6f} {fc:&gt;14.6e}")
+
+        if fc == 0 or (b - a) / 2 &lt; tol:      # criterio de parada
+            return c, i
+
+        if fa * fc &lt; 0:
+            b, fb = c, fc
+        else:
+            a, fa = c, fc
+
+    raise RuntimeError(f"No convergio en {max_iter} iteraciones")
+
+
+if __name__ == "__main__":
+    f = lambda x: x**3 - x - 2
+    raiz, iteraciones = biseccion(f, 1, 2, tol=1e-10)
+    print(f"\nRaiz = {raiz:.10f}  ({iteraciones} iteraciones)")</code></pre>
+  </div>
+    <p style="margin-bottom:0;">Salida: <span class="formula">Raiz = 1.5213797068 (34 iteraciones)</span>. La bisecci&oacute;n necesita muchas iteraciones porque su convergencia es lineal.</p>
+  </div>
+
+  <h2>Vectorizaci&oacute;n con NumPy</h2>
+  <p>NumPy permite evaluar una funci&oacute;n sobre miles de puntos sin escribir un bucle, lo que es mucho m&aacute;s r&aacute;pido y m&aacute;s legible:</p>
+  <div class="code-block">
+    <div class="code-block-head">Tabular y graficar una funci&oacute;n</div>
+    <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2, 3, 500)      # 500 puntos entre -2 y 3
+y = x**3 - x - 2                 # se evalua sobre todo el arreglo de una vez
+
+plt.axhline(0, color="#5A6866", linewidth=1)
+plt.plot(x, y, color="#0F6E73", linewidth=2, label="f(x) = x^3 - x - 2")
+plt.plot(1.5213797, 0, "o", color="#BB4F27", markersize=9, label="raiz")
+plt.legend(); plt.grid(alpha=.3)
+plt.title("Localizacion grafica de la raiz")
+plt.savefig("raiz.png", dpi=150)
+
+# Deteccion automatica de cambios de signo (localizacion de raices)
+signos = np.sign(y)
+cambios = np.where(np.diff(signos) != 0)[0]
+print("Intervalos con raiz:", [(x[i], x[i+1]) for i in cambios])</code></pre>
+  </div>
+
+  <div class="callout">
+    <h4>Atajo: SciPy ya lo trae hecho</h4>
+    <p>Para trabajo real no se reimplementan los m&eacute;todos: <code>scipy.optimize.brentq(f, a, b)</code> halla ra&iacute;ces, <code>scipy.integrate.solve_ivp</code> resuelve EDO y <code>numpy.linalg.solve</code> resuelve sistemas lineales. Programarlos a mano es un ejercicio <em>de aprendizaje</em>: sirve para entender el error y la convergencia.</p>
+  </div>
+
+  <h2>Videos recomendados</h2>
+  <p class="section-hint">Dos explicaciones distintas del mismo tema: si una no te encaja, prueba la otra.</p>
+  <div class="video-grid">
+    <figure class="video-card">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/6pneWas7lI4" title="M&eacute;todo de bisecci&oacute;n en Python"
+                loading="lazy" allowfullscreen
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <figcaption>
+        <h4>M&eacute;todo de bisecci&oacute;n en Python</h4>
+        <p class="video-meta">Clases de Matem&aacute;ticas y Programaci&oacute;n &middot; 8:26</p>
+        <p>La misma implementaci&oacute;n que se comenta l&iacute;nea a l&iacute;nea en esta p&aacute;gina.</p>
+        <a href="https://www.youtube.com/watch?v=6pneWas7lI4" target="_blank" rel="noopener">Ver en YouTube &rarr;</a>
+      </figcaption>
+    </figure>
+
+    <figure class="video-card">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/xTJ3uGJ_b7Q" title="NumPy en 19 minutos"
+                loading="lazy" allowfullscreen
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <figcaption>
+        <h4>NumPy en 19 minutos</h4>
+        <p class="video-meta">Errodringer &middot; 19:36</p>
+        <p>La biblioteca de arreglos sobre la que se apoya todo el trabajo num&eacute;rico en Python.</p>
+        <a href="https://www.youtube.com/watch?v=xTJ3uGJ_b7Q" target="_blank" rel="noopener">Ver en YouTube &rarr;</a>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h2>Aplicaciones t&iacute;picas en ingenier&iacute;a</h2>
+  <div class="apps-grid">
+    <div><span class="app-icon">01</span><h4>Prototipado r&aacute;pido</h4><p>Se prueba un m&eacute;todo en 20 l&iacute;neas antes de invertir semanas program&aacute;ndolo en C++.</p></div>
+    <div><span class="app-icon">02</span><h4>Docencia e informes</h4><p>Jupyter Notebook mezcla c&oacute;digo, resultados y gr&aacute;ficas en un solo documento reproducible.</p></div>
+    <div><span class="app-icon">03</span><h4>Ciencia de datos e IA</h4><p>NumPy y SciPy son la base sobre la que se construyen pandas, scikit-learn y PyTorch.</p></div>
+  </div>
+
+  <h2>Ventajas y desventajas</h2>
+  <div class="pros-cons-grid">
+    <div class="pros">
+      <h4>Ventajas</h4>
+      <ul>
+        <li>Sintaxis cercana al pseudoc&oacute;digo: el m&eacute;todo se lee tal como se explica en clase.</li>
+        <li>Doble precisi&oacute;n IEEE 754 por defecto en todos los <code>float</code>.</li>
+        <li>Ecosistema num&eacute;rico maduro, libre y multiplataforma.</li>
+        <li>Gr&aacute;ficas inmediatas con Matplotlib para visualizar convergencia.</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>Desventajas</h4>
+      <ul>
+        <li>Los bucles puros en Python son lentos: hay que vectorizar con NumPy.</li>
+        <li>No es tipado est&aacute;tico, as&iacute; que ciertos errores solo aparecen en ejecuci&oacute;n.</li>
+        <li>Requiere instalar dependencias externas para lo m&aacute;s interesante.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Errores comunes</h2>
+  <ul class="common-errors">
+    <li><strong>Usar <code>==</code> entre flotantes.</strong> Siempre <code>abs(a - b) &lt; tol</code>; en NumPy, <code>np.isclose(a, b)</code>.</li>
+    <li><strong>Escribir <code>^</code> para potencia.</strong> En Python <code>^</code> es XOR de bits. La potencia es <code>**</code>: <code>x**2</code>.</li>
+    <li><strong>Olvidar el <code>max_iter</code>.</strong> Un <code>while</code> sin tope deja el programa colgado cuando el m&eacute;todo diverge.</li>
+    <li><strong>Dividir enteros esperando un real.</strong> En Python 3 <code>/</code> siempre devuelve <code>float</code>, pero <code>//</code> trunca: <code>7//2</code> da 3, no 3.5.</li>
+  </ul>
+
+  <h2>Banco de ejercicios propuestos</h2>
+  <p class="section-hint">Escribe el c&oacute;digo y ejec&uacute;talo antes de mirar la soluci&oacute;n.</p>
+  <div class="proposed-exercises">
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">1. Programa una funci&oacute;n que calcule el error relativo entre dos valores.</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p>Hay que proteger el caso en que el valor verdadero sea cero para no dividir entre cero.</p>
+        <p><code>def error_relativo(verdadero, aprox):</code></p>
+        <p><code>&nbsp;&nbsp;&nbsp;&nbsp;if verdadero == 0: return abs(aprox)</code></p>
+        <p><code>&nbsp;&nbsp;&nbsp;&nbsp;return abs((verdadero - aprox) / verdadero)</code></p>
+        <span class="ex-answer">Respuesta: La funci&oacute;n devuelve |(v &minus; a)/v|, con el caso v = 0 tratado aparte.</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">2. Escribe una funci&oacute;n que estime el &eacute;psilon de m&aacute;quina sin usar <code>sys</code>.</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p>Se parte de eps = 1.0 y se divide entre 2 mientras 1 + eps siga siendo distinto de 1.</p>
+        <p><code>eps = 1.0</code></p>
+        <p><code>while 1.0 + eps / 2 != 1.0: eps /= 2</code></p>
+        <p><code>print(eps)</code> imprime 2.220446049250313e-16.</p>
+        <span class="ex-answer">Respuesta: eps &asymp; 2.22 &times; 10<sup>&minus;16</sup>, el mismo valor de <code>sys.float_info.epsilon</code>.</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">3. Implementa el m&eacute;todo de punto fijo para x = cos(x) desde x&#8320; = 1.</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p><code>import math</code></p>
+        <p><code>x = 1.0</code></p>
+        <p><code>for i in range(100):</code></p>
+        <p><code>&nbsp;&nbsp;&nbsp;&nbsp;xn = math.cos(x)</code></p>
+        <p><code>&nbsp;&nbsp;&nbsp;&nbsp;if abs(xn - x) &lt; 1e-10: break</code></p>
+        <p><code>&nbsp;&nbsp;&nbsp;&nbsp;x = xn</code></p>
+        <p>Converge en unas 85 iteraciones porque |g&prime;(x*)| = |sen(0.739)| &asymp; 0.67, cercano a 1.</p>
+        <span class="ex-answer">Respuesta: x* &asymp; 0.7390851332</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">4. Usa NumPy para localizar todos los intervalos donde f(x) = x&sup3; &minus; 6x&sup2; + 11x &minus; 6 cambia de signo en [0, 4].</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p>Se tabula la funci&oacute;n con <code>np.linspace(0, 4, 401)</code>.</p>
+        <p>Se calcula <code>np.sign(y)</code> y luego <code>np.diff</code> sobre esos signos.</p>
+        <p>Los &iacute;ndices donde la diferencia no es cero marcan los cambios de signo.</p>
+        <p>El polinomio factoriza como (x&minus;1)(x&minus;2)(x&minus;3).</p>
+        <span class="ex-answer">Respuesta: Tres intervalos, alrededor de x = 1, x = 2 y x = 3.</span>
+      </div>
+    </details>
+
+  </div>
+
+  <h2>Fuentes acad&eacute;micas para profundizar</h2>
+  <ul class="source-links">
+    <li><a href="https://numpy.org/doc/stable/user/absolute_beginners.html" target="_blank" rel="noopener">NumPy &mdash; Gu&iacute;a oficial para principiantes</a><span>Documentaci&oacute;n oficial: arreglos, vectorizaci&oacute;n y operaciones b&aacute;sicas.</span></li>
+    <li><a href="https://docs.scipy.org/doc/scipy/tutorial/optimize.html" target="_blank" rel="noopener">SciPy &mdash; Tutorial de optimizaci&oacute;n y b&uacute;squeda de ra&iacute;ces</a><span>Uso de <code>brentq</code>, <code>newton</code> y <code>fsolve</code> con ejemplos.</span></li>
+    <li><a href="https://docs.python.org/es/3/tutorial/" target="_blank" rel="noopener">Python &mdash; Tutorial oficial en espa&ntilde;ol</a><span>Referencia del lenguaje base: tipos, funciones, bucles y m&oacute;dulos.</span></li>
+    <li><a href="https://scholar.google.com/scholar?q=python+scientific+computing+numerical+methods+education" target="_blank" rel="noopener">Google Acad&eacute;mico &mdash; &laquo;python scientific computing numerical methods&raquo;</a><span>Art&iacute;culos sobre el uso de Python en la ense&ntilde;anza del an&aacute;lisis num&eacute;rico.</span></li>
+  </ul>
+
+  <h2>Para profundizar (bibliograf&iacute;a)</h2>
+  <ul class="ref-list">
+    <li><span class="ref-title">Johansson, R. &mdash; Numerical Python: Scientific Computing and Data Science Applications</span>Cubre NumPy, SciPy y SymPy aplicados a los m&eacute;todos de este curso.</li>
+    <li><span class="ref-title">Kiusalaas, J. &mdash; Numerical Methods in Engineering with Python 3</span>Cada m&eacute;todo del curso con su implementaci&oacute;n comentada en Python.</li>
+    <li><span class="ref-title">Chasnov, J. &mdash; Numerical Methods (LibreTexts)</span>Libro abierto con c&oacute;digo de apoyo y ejercicios.</li>
+  </ul>
+
+  <div class="detail-actionbar">
+    <a href="../index.php" class="btn btn-ghost">&larr; Volver a la p&aacute;gina principal</a>
+    <a href="../index.php#juegos" class="btn btn-primary">Resolver preguntas de este tema &rarr;</a>
+  </div>
+
+    </div>
+  </div>
+
+  <div class="topic-crossnav">
+    <a href="algoritmos-convergencia.html">&larr; Anterior: Algoritmos y convergencia</a>
+    <a href="../index.php#temas">Ver todos los temas</a>
+    <a href="solucion-numerica.html">Siguiente: Soluci&oacute;n num&eacute;rica &rarr;</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="max-width:900px; margin:0 auto; border-top:none; padding-top:2.4rem;">
+    <span>&copy; <span id="year"></span> M&eacute;todosNum&eacute;ricos. Proyecto acad&eacute;mico de Ingenier&iacute;a de Sistemas.</span>
+    <a href="../index.php#contacto">Contacto</a>
+    <a href="../proyecto.html">Documentaci&oacute;n del proyecto</a>
+  </div>
+</footer>
+
+<script src="temas.js?v=18"></script>
+<script src="../accessibility.js?v=18"></script>
+</body>
+</html>

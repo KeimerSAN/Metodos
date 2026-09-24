@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solución numérica de una variable — Guía completa | Métodos Numéricos</title>
+<meta name="description" content="Guía completa de la solución numérica de ecuaciones de una variable: fundamentos, criterios de convergencia, comparación de métodos, video y referencias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=18">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- ===================== CABECERA ===================== -->
+  <header class="site-header" id="top">
+
+    <!-- Fila 1: barra de utilidades -->
+    <div class="masthead-utility">
+      <div class="masthead-utility-inner">
+        <span class="masthead-course">Aula interactiva &middot; Ingenier&iacute;a de Sistemas</span>
+        <span class="masthead-links">
+          <a href="../manual.html">Manual</a>
+          <a href="../proyecto.html">Proyecto</a>
+          <a href="../index.php#contacto">Contacto</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- Fila 2: mancheta con la marca centrada -->
+    <div class="masthead">
+      <a href="../index.php#inicio" class="masthead-brand" aria-label="Inicio &mdash; M&eacute;todos Num&eacute;ricos">
+        <span class="masthead-rule" aria-hidden="true"></span>
+        <span class="masthead-name">M&eacute;todos<em>Num&eacute;ricos</em></span>
+        <span class="masthead-rule" aria-hidden="true"></span>
+      </a>
+      <p class="masthead-tagline">Fundamentos y errores &middot; M&eacute;todos iterativos &middot; Ecuaciones diferenciales</p>
+    </div>
+
+    <!-- Fila 3: navegación principal (queda fija al hacer scroll) -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a href="../index.php#inicio" class="navbar-compact" aria-hidden="true" tabindex="-1">M&eacute;todos<em>Num&eacute;ricos</em></a>
+
+        <nav class="main-nav" id="mainNav" aria-label="Navegaci&oacute;n principal">
+          <a href="../index.php#inicio">Inicio</a>
+          <div class="nav-dropdown" id="temasDropdown">
+            <button class="nav-dropdown-toggle" id="temasDropdownToggle" aria-expanded="false">
+              Temas
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          <div class="nav-dropdown-menu nav-mega">
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 1 <em>Fundamentos y Teor&iacute;a de Errores</em></span>
+              <a href="metodo-numerico.html"><span class="tag-num">1.1</span> &iquest;Qu&eacute; es un m&eacute;todo num&eacute;rico?</a>
+              <a href="representacion.html"><span class="tag-num">1.2</span> Representaci&oacute;n de n&uacute;meros</a>
+              <a href="punto-flotante.html"><span class="tag-num">1.3</span> Aritm&eacute;tica de punto flotante</a>
+              <a href="errores.html"><span class="tag-num">1.4</span> Errores de redondeo</a>
+              <a href="algoritmos-convergencia.html"><span class="tag-num">1.5</span> Algoritmos y convergencia</a>
+              <a href="python.html"><span class="tag-num">1.6</span> Python para m&eacute;todos num&eacute;ricos</a>
+            </div>
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 2 <em>M&eacute;todos Iterativos y Ra&iacute;ces de Funciones</em></span>
+              <a href="solucion-numerica.html" class="is-current" aria-current="page"><span class="tag-num">2.1</span> Soluci&oacute;n num&eacute;rica</a>
+              <a href="convergencia.html"><span class="tag-num">2.2</span> Tasas de convergencia</a>
+              <a href="biseccion.html"><span class="tag-num">2.3</span> M&eacute;todo de bisecci&oacute;n</a>
+              <a href="puntofijo.html"><span class="tag-num">2.4</span> Iteraci&oacute;n de punto fijo</a>
+              <a href="newton.html"><span class="tag-num">2.5</span> M&eacute;todo de Newton</a>
+              <a href="muller.html"><span class="tag-num">2.6</span> M&eacute;todo de Muller</a>
+            </div>
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 3 <em>Ecuaciones Diferenciales Ordinarias</em></span>
+              <a href="euler.html"><span class="tag-num">3.1</span> M&eacute;todo de Euler</a>
+              <a href="taylor.html"><span class="tag-num">3.2</span> M&eacute;todo de Taylor</a>
+              <a href="runge-kutta.html"><span class="tag-num">3.3</span> M&eacute;todo de Runge-Kutta</a>
+              <a href="multipaso.html"><span class="tag-num">3.4</span> M&eacute;todos multipaso</a>
+            </div>
+            <a href="../index.php#temas" class="nav-dropdown-all">Ver el mapa completo de los 16 temas &rarr;</a>
+          </div>
+          </div>
+          <a href="../index.php#juegos">Actividades</a>
+          <a href="../galeria.html">Galer&iacute;a</a>
+          <a href="../index.php#certificacion">Certificaci&oacute;n</a>
+          <a href="../index.php#nosotros">Acerca de</a>
+          <a href="../index.php#bibliografia">Bibliograf&iacute;a</a>
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir men&uacute;">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+<section class="detail-hero">
+  <div class="detail-hero-inner">
+    <p class="breadcrumb"><a href="../index.php#inicio">Inicio</a><span>/</span><a href="../index.php#temas">Temas</a><span>/</span>Solución numérica</p>
+    <h1>Solución numérica de una variable</h1>
+    <p class="detail-lead">El punto de partida de todo el curso: por qué necesitamos métodos iterativos y cómo se comparan entre sí bisección, Muller y punto fijo.</p>
+  </div>
+</section>
+
+<main class="detail-body" id="contenido">
+  <div class="detail-layout">
+
+    <aside class="detail-aside">
+      <div class="detail-aside-inner">
+        <p class="detail-aside-title">En esta p&aacute;gina</p>
+        <nav class="detail-toc" id="detailToc" aria-label="Sumario del tema"></nav>
+        <div class="detail-aside-actions">
+          <a href="../index.php#juegos" class="detail-aside-cta">Practicar este tema</a>
+          <a href="../index.php#temas" class="detail-aside-link">Ver los 16 temas</a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="detail-main">
+
+  <h2>¿Por qué métodos numéricos?</h2>
+  <p>Muchas ecuaciones f(x) = 0 —sobre todo las que combinan polinomios, exponenciales, logaritmos o funciones trigonométricas— no tienen una fórmula algebraica cerrada para despejar x. En esos casos, en lugar de una solución exacta, construimos una <strong>sucesión de aproximaciones</strong> x₀, x₁, x₂, … que se acerca cada vez más a la raíz real, y nos detenemos cuando el error es lo bastante pequeño para el problema que estamos resolviendo.</p>
+  <p>Esa es la idea que comparten los tres métodos de este curso: bisección, Muller y punto fijo. Lo que cambia entre ellos es <em>cómo</em> construyen esa sucesión y qué garantías ofrecen.</p>
+
+  <div class="topic-diagram">
+    <svg viewBox="0 0 640 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama de una sucesion de aproximaciones que se acerca progresivamente a la raiz de una funcion">
+      <line x1="40" y1="90" x2="600" y2="90" stroke="#5A6866" stroke-width="1.5"/>
+      <circle cx="90" cy="90" r="6" fill="#0F6E73"/>
+      <circle cx="220" cy="90" r="6" fill="#0F6E73"/>
+      <circle cx="330" cy="90" r="5" fill="#0F6E73"/>
+      <circle cx="400" cy="90" r="5" fill="#0F6E73"/>
+      <circle cx="435" cy="90" r="4" fill="#0F6E73"/>
+      <circle cx="453" cy="90" r="4" fill="#0F6E73"/>
+      <circle cx="465" cy="90" r="7" fill="#BB4F27" stroke="#0E3B40" stroke-width="1.5"/>
+      <text x="90" y="118" fill="#1F2B2A" font-family="IBM Plex Mono, monospace" font-size="13" text-anchor="middle">x₀</text>
+      <text x="220" y="118" fill="#1F2B2A" font-family="IBM Plex Mono, monospace" font-size="13" text-anchor="middle">x₁</text>
+      <text x="330" y="118" fill="#1F2B2A" font-family="IBM Plex Mono, monospace" font-size="12" text-anchor="middle">x₂</text>
+      <text x="400" y="118" fill="#1F2B2A" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">x₃</text>
+      <text x="465" y="118" fill="#9A3F1D" font-family="IBM Plex Mono, monospace" font-size="13" text-anchor="middle">x*</text>
+      <text x="465" y="55" fill="#9A3F1D" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">raíz real</text>
+    </svg>
+    <p class="topic-diagram-caption">Cada aproximación xₙ está más cerca de la raíz real x* que la anterior — así se ve la convergencia sobre la recta numérica, sin importar qué método la produzca.</p>
+  </div>
+
+  <h2>Videos recomendados</h2>
+  <p class="section-hint">Dos explicaciones distintas del mismo tema: si una no te encaja, prueba la otra.</p>
+  <div class="video-grid">
+    <figure class="video-card">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/X2Osytcx8qA" title="Soluci&oacute;n de ecuaciones no lineales"
+                loading="lazy" allowfullscreen
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <figcaption>
+        <h4>Soluci&oacute;n de ecuaciones no lineales</h4>
+        <p class="video-meta">Universidad de Ensenada &middot; &mdash;</p>
+        <p>Planteamiento general del problema f(x) = 0 y de la estrategia iterativa.</p>
+        <a href="https://www.youtube.com/watch?v=X2Osytcx8qA" target="_blank" rel="noopener">Ver en YouTube &rarr;</a>
+      </figcaption>
+    </figure>
+
+    <figure class="video-card">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/fuYSybbQtHg" title="Ecuaciones no lineales de una variable"
+                loading="lazy" allowfullscreen
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <figcaption>
+        <h4>Ecuaciones no lineales de una variable</h4>
+        <p class="video-meta">AbueTr&oacute;nica &middot; 13:52</p>
+        <p>Repaso de los m&eacute;todos disponibles y criterios para elegir entre ellos.</p>
+        <a href="https://www.youtube.com/watch?v=fuYSybbQtHg" target="_blank" rel="noopener">Ver en YouTube &rarr;</a>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h2>Elementos comunes a todo método iterativo</h2>
+  <ol class="algo-steps">
+    <li>Una o varias aproximaciones iniciales (un intervalo, un punto o tres puntos, según el método).</li>
+    <li>Una fórmula de recurrencia que genera la siguiente aproximación a partir de las anteriores.</li>
+    <li>Un criterio de error, típicamente |x₍ₙ₊₁₎ − xₙ| &lt; ε o |f(xₙ)| &lt; ε.</li>
+    <li>Un número máximo de iteraciones, por si la sucesión no converge.</li>
+  </ol>
+
+  <h2>Comparación de los tres métodos</h2>
+  <div class="table-wrap">
+    <table class="iter-table">
+      <thead><tr><th>Método</th><th>Tipo</th><th>Datos iniciales</th><th>Velocidad</th><th>Raíces complejas</th></tr></thead>
+      <tbody>
+        <tr><td>Bisección</td><td>Cerrado</td><td>Intervalo [a,b] con f(a)·f(b)&lt;0</td><td>Lineal (lenta, muy segura)</td><td>No</td></tr>
+        <tr><td>Punto fijo</td><td>Abierto</td><td>Un valor x₀</td><td>Lineal (depende de g'(x))</td><td>No</td></tr>
+        <tr><td>Muller</td><td>Abierto</td><td>Tres valores x₀, x₁, x₂</td><td>Superlineal (≈1.84, rápida)</td><td>Sí</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:var(--ink-soft); font-size:.92rem;">No existe un método universalmente mejor: la elección depende de si conocemos un intervalo con cambio de signo, si necesitamos raíces complejas, y de qué tan rápido debe converger el algoritmo.</p>
+
+  <h2>Aplicaciones típicas en ingeniería</h2>
+  <div class="apps-grid">
+    <div><span class="app-icon">01</span><h4>Ingeniería de sistemas</h4><p>Modelado de rendimiento y cuellos de botella en sistemas donde las ecuaciones de espera (colas) no tienen solución cerrada.</p></div>
+    <div><span class="app-icon">02</span><h4>Ingeniería industrial</h4><p>Puntos de equilibrio en modelos de inventario, costos y producción con relaciones no lineales entre variables.</p></div>
+    <div><span class="app-icon">03</span><h4>Ciencia de datos</h4><p>Los algoritmos de optimización que entrenan modelos de machine learning son, en el fondo, métodos iterativos como estos.</p></div>
+  </div>
+
+  <h2>Errores comunes al elegir un método numérico</h2>
+  <ul class="common-errors">
+    <li><strong>Usar el mismo método para todo.</strong> No hay un método "mejor" universal: bisección es la más segura, Muller la más rápida y versátil, punto fijo la más simple de programar.</li>
+    <li><strong>Ignorar el criterio de parada.</strong> Un mal criterio (tolerancia demasiado grande o demasiado pequeña) puede dar resultados imprecisos o hacer que el algoritmo nunca termine.</li>
+    <li><strong>No poner límite de iteraciones.</strong> Si el método diverge, sin un máximo de iteraciones el programa puede quedarse en un ciclo infinito.</li>
+  </ul>
+
+  <h2>Ejercicios propuestos</h2>
+  <p style="color:var(--ink-soft); font-size:.9rem; margin-top:-.6rem;">Intenta resolver cada ejercicio tú mismo primero. Cuando quieras comparar, presiona el botón "¿Ver ejercicio resuelto?" y se desplegará una guía de solución.</p>
+
+  <div class="proposed-exercises">
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">1. Para f(x) = x³ − x − 2, resuelve la raíz con los tres métodos (bisección, Muller y punto fijo) y compara cuántas iteraciones necesita cada uno para un error menor a 10⁻⁴</span><span class="ex-reveal-btn">¿Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p><strong>Paso 1:</strong> la raíz real es x ≈ 1.5214 (puedes verificarlo en la página de Bisección, donde este mismo ejemplo aparece resuelto).</p>
+        <p><strong>Paso 2:</strong> con <em>bisección</em> en [1, 2] se necesitan alrededor de 14 iteraciones para bajar el error de 10⁻⁴.</p>
+        <p><strong>Paso 3:</strong> con <em>punto fijo</em>, usando una g(x) bien elegida, suele tomar entre 8 y 12 iteraciones.</p>
+        <p><strong>Paso 4:</strong> con <em>Muller</em>, partiendo de x₀=1, x₁=1.5, x₂=2, se llega al mismo error en solo 3 a 4 iteraciones.</p>
+        <span class="ex-answer">Conclusión: Muller converge más rápido; bisección es la más lenta pero la más segura.</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">2. Identifica al menos dos ecuaciones de tu carrera (física, estructuras, circuitos) que no tengan solución algebraica cerrada</span><span class="ex-reveal-btn">¿Ver ejemplo de respuesta?</span></summary>
+      <div class="ex-solution">
+        <p><strong>Ejemplo 1 (estructuras/vigas):</strong> la ecuación de pandeo de columnas con condiciones no ideales puede llevar a ecuaciones trascendentes del tipo tan(x) = x, que no tienen solución algebraica exacta.</p>
+        <p><strong>Ejemplo 2 (circuitos eléctricos):</strong> al analizar circuitos con diodos, la ecuación de Shockley mezcla términos exponenciales y lineales (I = I₀(e^(V/V_T) − 1)), y despejar V exactamente no es posible con álgebra elemental.</p>
+        <span class="ex-answer">Respuesta esperada: cualquier ecuación que combine exponenciales, logaritmos o funciones trigonométricas con términos polinómicos suele calificar.</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">3. Explica, en tus palabras, por qué |g'(x)| &lt; 1 es una condición razonable para que el punto fijo converja</span><span class="ex-reveal-btn">¿Ver ejemplo de respuesta?</span></summary>
+      <div class="ex-solution">
+        <p><strong>Idea clave:</strong> g'(x) mide qué tan "sensible" es g a pequeños cambios en x. Si |g'(x)| &lt; 1, cada iteración reduce la distancia al punto fijo (el error se va achicando). Si |g'(x)| &gt; 1, cada iteración la agranda (el error crece y la sucesión se aleja).</p>
+        <p>Es como un péndulo que pierde energía en cada oscilación (converge) frente a uno que gana energía (diverge).</p>
+        <span class="ex-answer">Respuesta esperada: con |g'(x)|&lt;1 el error se multiplica por un factor menor a 1 en cada paso, así que tiende a cero.</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">4. ¿Cuál de los tres métodos usarías si solo conoces un intervalo [a, b] donde f cambia de signo, y necesitas total seguridad de convergencia?</span><span class="ex-reveal-btn">¿Ver ejemplo de respuesta?</span></summary>
+      <div class="ex-solution">
+        <p><strong>Respuesta esperada:</strong> bisección, porque es el único de los tres métodos "cerrado" (de intervalo): siempre converge si f(a)·f(b) &lt; 0, sin importar qué tan complicada sea la función, aunque de forma más lenta que los otros.</p>
+        <p>Muller y punto fijo son métodos abiertos: pueden converger más rápido, pero no garantizan hacerlo siempre.</p>
+        <span class="ex-answer">Respuesta: bisección.</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">5. f(x) = x² − 7 = 0: define el criterio de parada |f(xₙ)| &lt; 10⁻⁶ y estima cuántas cifras decimales correctas tendrás al detenerte</span><span class="ex-reveal-btn">¿Ver ejemplo de respuesta?</span></summary>
+      <div class="ex-solution">
+        <p><strong>Paso 1:</strong> la raíz real es √7 ≈ 2.6457513...</p>
+        <p><strong>Paso 2:</strong> si |f(xₙ)| &lt; 10⁻⁶, como f'(x) = 2x ≈ 5.29 cerca de la raíz, el error en x es aproximadamente |f(xₙ)|/|f'(x)| ≈ 10⁻⁶/5.29 ≈ 1.9×10⁻⁷.</p>
+        <p><strong>Paso 3:</strong> eso significa unas 6 cifras decimales correctas.</p>
+        <span class="ex-answer">Respuesta: aproximadamente 6 cifras decimales correctas.</span>
+      </div>
+    </details>
+
+  </div>
+
+  <h2>Fuentes académicas para profundizar</h2>
+  <ul class="source-links">
+    <li><a href="https://math.libretexts.org/Workbench/Numerical_Methods_with_Applications_(Kaw)/3:_Nonlinear_Equations" target="_blank" rel="noopener">math.libretexts.org — Capítulo 3: Nonlinear Equations (Autar Kaw)</a><span>Libro de texto abierto (open textbook) con todos los métodos de raíces de ecuaciones no lineales.</span></li>
+    <li><a href="https://scholar.google.com/scholar?q=numerical+methods+for+solving+nonlinear+equations+root+finding" target="_blank" rel="noopener">Google Académico — "numerical methods for solving nonlinear equations"</a><span>Búsqueda de artículos académicos sobre métodos de solución numérica de ecuaciones.</span></li>
+    <li><a href="https://www.google.com/search?tbm=bks&q=Chapra+Canale+M%C3%A9todos+num%C3%A9ricos+para+ingenieros" target="_blank" rel="noopener">Google Libros — Métodos numéricos para ingenieros (Chapra &amp; Canale)</a><span>Busca ediciones del libro de referencia clásico en español para toda la asignatura.</span></li>
+  </ul>
+
+  <h2>Para profundizar (bibliografía)</h2>
+  <ul class="ref-list">
+    <li><span class="ref-title">Burden, R. L. & Faires, J. D. — Numerical Analysis</span>Texto de referencia clásico; introduce el marco teórico de convergencia que comparten todos los métodos de búsqueda de raíces.</li>
+    <li><span class="ref-title">Chapra, S. C. & Canale, R. P. — Métodos numéricos para ingenieros</span>Organiza los métodos en "cerrados" y "abiertos" y los compara con casos de estudio de ingeniería.</li>
+    <li><span class="ref-title">Nieves, A. & Domínguez, F. — Métodos numéricos aplicados a la ingeniería</span>Enfoque en español, orientado a la implementación práctica de cada método.</li>
+  </ul>
+
+  <div class="detail-actionbar">
+    <a href="../index.php" class="btn btn-ghost">&larr; Volver a la página principal</a>
+    <a href="../index.php#juegos" class="btn btn-primary">Resolver preguntas de este tema &rarr;</a>
+  </div>
+
+    </div>
+  </div>
+
+  <div class="topic-crossnav">
+    <a href="python.html">&larr; Anterior: Python para m&eacute;todos num&eacute;ricos</a>
+    <a href="../index.php#temas">Ver todos los temas</a>
+    <a href="convergencia.html">Siguiente: Tasas de convergencia &rarr;</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="max-width:900px; margin:0 auto; border-top:none; padding-top:2.4rem;">
+    <span>&copy; <span id="year"></span> M&eacute;todosNum&eacute;ricos. Proyecto acad&eacute;mico de Ingenier&iacute;a de Sistemas.</span>
+    <a href="../index.php#contacto">Contacto</a>
+    <a href="../proyecto.html">Documentaci&oacute;n del proyecto</a>
+  </div>
+</footer>
+
+<script src="temas.js?v=18"></script>
+<script src="../accessibility.js?v=18"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Errores de redondeo y aritm&eacute;tica de computadores | M&eacute;todos Num&eacute;ricos</title>
+<meta name="description" content="Error absoluto, relativo y porcentual, cifras significativas, criterio de Scarborough, propagacion del error y numero de condicion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=18">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- ===================== CABECERA ===================== -->
+  <header class="site-header" id="top">
+
+    <!-- Fila 1: barra de utilidades -->
+    <div class="masthead-utility">
+      <div class="masthead-utility-inner">
+        <span class="masthead-course">Aula interactiva &middot; Ingenier&iacute;a de Sistemas</span>
+        <span class="masthead-links">
+          <a href="../manual.html">Manual</a>
+          <a href="../proyecto.html">Proyecto</a>
+          <a href="../index.php#contacto">Contacto</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- Fila 2: mancheta con la marca centrada -->
+    <div class="masthead">
+      <a href="../index.php#inicio" class="masthead-brand" aria-label="Inicio &mdash; M&eacute;todos Num&eacute;ricos">
+        <span class="masthead-rule" aria-hidden="true"></span>
+        <span class="masthead-name">M&eacute;todos<em>Num&eacute;ricos</em></span>
+        <span class="masthead-rule" aria-hidden="true"></span>
+      </a>
+      <p class="masthead-tagline">Fundamentos y errores &middot; M&eacute;todos iterativos &middot; Ecuaciones diferenciales</p>
+    </div>
+
+    <!-- Fila 3: navegación principal (queda fija al hacer scroll) -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a href="../index.php#inicio" class="navbar-compact" aria-hidden="true" tabindex="-1">M&eacute;todos<em>Num&eacute;ricos</em></a>
+
+        <nav class="main-nav" id="mainNav" aria-label="Navegaci&oacute;n principal">
+          <a href="../index.php#inicio">Inicio</a>
+          <div class="nav-dropdown" id="temasDropdown">
+            <button class="nav-dropdown-toggle" id="temasDropdownToggle" aria-expanded="false">
+              Temas
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          <div class="nav-dropdown-menu nav-mega">
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 1 <em>Fundamentos y Teor&iacute;a de Errores</em></span>
+              <a href="metodo-numerico.html"><span class="tag-num">1.1</span> &iquest;Qu&eacute; es un m&eacute;todo num&eacute;rico?</a>
+              <a href="representacion.html"><span class="tag-num">1.2</span> Representaci&oacute;n de n&uacute;meros</a>
+              <a href="punto-flotante.html"><span class="tag-num">1.3</span> Aritm&eacute;tica de punto flotante</a>
+              <a href="errores.html" class="is-current" aria-current="page"><span class="tag-num">1.4</span> Errores de redondeo</a>
+              <a href="algoritmos-convergencia.html"><span class="tag-num">1.5</span> Algoritmos y convergencia</a>
+              <a href="python.html"><span class="tag-num">1.6</span> Python para m&eacute;todos num&eacute;ricos</a>
+            </div>
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 2 <em>M&eacute;todos Iterativos y Ra&iacute;ces de Funciones</em></span>
+              <a href="solucion-numerica.html"><span class="tag-num">2.1</span> Soluci&oacute;n num&eacute;rica</a>
+              <a href="convergencia.html"><span class="tag-num">2.2</span> Tasas de convergencia</a>
+              <a href="biseccion.html"><span class="tag-num">2.3</span> M&eacute;todo de bisecci&oacute;n</a>
+              <a href="puntofijo.html"><span class="tag-num">2.4</span> Iteraci&oacute;n de punto fijo</a>
+              <a href="newton.html"><span class="tag-num">2.5</span> M&eacute;todo de Newton</a>
+              <a href="muller.html"><span class="tag-num">2.6</span> M&eacute;todo de Muller</a>
+            </div>
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 3 <em>Ecuaciones Diferenciales Ordinarias</em></span>
+              <a href="euler.html"><span class="tag-num">3.1</span> M&eacute;todo de Euler</a>
+              <a href="taylor.html"><span class="tag-num">3.2</span> M&eacute;todo de Taylor</a>
+              <a href="runge-kutta.html"><span class="tag-num">3.3</span> M&eacute;todo de Runge-Kutta</a>
+              <a href="multipaso.html"><span class="tag-num">3.4</span> M&eacute;todos multipaso</a>
+            </div>
+            <a href="../index.php#temas" class="nav-dropdown-all">Ver el mapa completo de los 16 temas &rarr;</a>
+          </div>
+          </div>
+          <a href="../index.php#juegos">Actividades</a>
+          <a href="../galeria.html">Galer&iacute;a</a>
+          <a href="../index.php#certificacion">Certificaci&oacute;n</a>
+          <a href="../index.php#nosotros">Acerca de</a>
+          <a href="../index.php#bibliografia">Bibliograf&iacute;a</a>
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir men&uacute;">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+<section class="detail-hero">
+  <div class="detail-hero-inner">
+    <p class="breadcrumb"><a href="../index.php#inicio">Inicio</a><span>/</span><a href="../index.php#temas">Temas</a><span>/</span>Errores de redondeo</p>
+    <h1>Errores de redondeo y aritm&eacute;tica de computadores</h1>
+    <p class="detail-lead">Medir, acotar y propagar el error: el vocabulario que convierte un n&uacute;mero en informaci&oacute;n confiable.</p>
+  </div>
+</section>
+
+<main class="detail-body" id="contenido">
+  <div class="detail-layout">
+
+    <aside class="detail-aside">
+      <div class="detail-aside-inner">
+        <p class="detail-aside-title">En esta p&aacute;gina</p>
+        <nav class="detail-toc" id="detailToc" aria-label="Sumario del tema"></nav>
+        <div class="detail-aside-actions">
+          <a href="../index.php#juegos" class="detail-aside-cta">Practicar este tema</a>
+          <a href="../index.php#temas" class="detail-aside-link">Ver los 16 temas</a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="detail-main">
+
+  <h2>Idea central</h2>
+  <p>Todo resultado num&eacute;rico viene acompa&ntilde;ado de un error. La teor&iacute;a de errores nos da el vocabulario para <strong>medirlo</strong>, <strong>acotarlo</strong> y <strong>predecir c&oacute;mo se propaga</strong> a trav&eacute;s de los c&aacute;lculos. Sin ella, un resultado num&eacute;rico no es informaci&oacute;n: es solo un n&uacute;mero.</p>
+
+  <h2>Tipos de error</h2>
+  <div class="table-wrap">
+    <table class="iter-table">
+      <thead><tr><th>Tipo</th><th>Origen</th><th>Ejemplo t&iacute;pico</th><th>&iquest;Se puede reducir?</th></tr></thead>
+      <tbody>
+        <tr><td>Inherente</td><td>Datos de entrada medidos</td><td>Una longitud medida como 2.35 &plusmn; 0.01 m</td><td>Solo mejorando el instrumento</td></tr>
+        <tr><td>De truncamiento</td><td>Cortar un proceso infinito</td><td>Usar 5 t&eacute;rminos de una serie de Taylor</td><td>S&iacute;: m&aacute;s t&eacute;rminos o menor paso h</td></tr>
+        <tr><td>De redondeo</td><td>Aritm&eacute;tica finita de la m&aacute;quina</td><td>Guardar 0.1 en binario</td><td>Parcialmente: m&aacute;s bits de mantisa</td></tr>
+        <tr><td>De propagaci&oacute;n</td><td>Errores previos que se arrastran</td><td>Restar dos cantidades casi iguales</td><td>S&iacute;: reformulando el algoritmo</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="formula-strip">
+    <div><span class="formula-label">Error absoluto</span><p class="formula">E<sub>a</sub> = | valor verdadero &minus; valor aproximado |</p></div>
+    <div><span class="formula-label">Error relativo</span><p class="formula">E<sub>r</sub> = E<sub>a</sub> / | valor verdadero |</p></div>
+    <div><span class="formula-label">Error relativo porcentual</span><p class="formula">&epsilon;<sub>%</sub> = E<sub>r</sub> &times; 100 %</p></div>
+    <div><span class="formula-label">Error relativo aproximado</span><p class="formula">&epsilon;<sub>a</sub> = | (x<sub>n</sub> &minus; x<sub>n&minus;1</sub>) / x<sub>n</sub> | &times; 100 %</p></div>
+  </div>
+
+  <div class="callout">
+    <h4>&iquest;Absoluto o relativo?</h4>
+    <p>El error absoluto por s&iacute; solo enga&ntilde;a. Equivocarse en 1 metro midiendo un l&aacute;piz es catastr&oacute;fico; equivocarse en 1 metro midiendo la distancia Bogot&aacute;&ndash;Quibd&oacute; es irrelevante. <strong>El error relativo es el que dice si un resultado sirve.</strong></p>
+  </div>
+
+  <h2>Cifras significativas</h2>
+  <p>Un valor aproximado tiene n cifras significativas correctas si su error relativo cumple el criterio de Scarborough:</p>
+  <div class="formula-strip">
+    <div><span class="formula-label">Criterio de Scarborough</span><p class="formula">&epsilon;<sub>a</sub> &lt; (0.5 &times; 10<sup>2&minus;n</sup>) %</p></div>
+  </div>
+  <div class="table-wrap">
+    <table class="iter-table">
+      <thead><tr><th>Cifras significativas deseadas</th><th>Tolerancia &epsilon;<sub>a</sub> requerida</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>5 %</td></tr>
+        <tr><td>2</td><td>0.5 %</td></tr>
+        <tr><td>3</td><td>0.05 %</td></tr>
+        <tr><td>4</td><td>0.005 %</td></tr>
+        <tr><td>6</td><td>0.00005 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ejercicio resuelto 1: errores de una aproximaci&oacute;n</h2>
+  <div class="exercise-box">
+    <p>Se aproxima &pi; = 3.14159265&hellip; con el valor 22/7 = 3.142857&hellip;</p>
+  <div class="table-wrap">
+    <table class="iter-table">
+      <thead><tr><th>Magnitud</th><th>C&aacute;lculo</th><th>Resultado</th></tr></thead>
+      <tbody>
+        <tr><td>Error absoluto</td><td>|3.14159265 &minus; 3.14285714|</td><td>0.00126449</td></tr>
+        <tr><td>Error relativo</td><td>0.00126449 / 3.14159265</td><td>4.0250 &times; 10<sup>&minus;4</sup></td></tr>
+        <tr><td>Error porcentual</td><td>4.0250 &times; 10<sup>&minus;4</sup> &times; 100</td><td>0.040250 %</td></tr>
+        <tr><td>Cifras correctas</td><td>0.04025 % &lt; 0.05 %</td><td>3 cifras significativas</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+
+  <h2>Ejercicio resuelto 2: propagaci&oacute;n del error</h2>
+  <div class="exercise-box">
+    <p>Se mide el lado de un cuadrado como L = 5.00 m con un error absoluto de 0.02 m. &iquest;Cu&aacute;l es el error del &aacute;rea A = L&sup2;?</p>
+    <p><strong>Paso 1 &mdash; F&oacute;rmula de propagaci&oacute;n:</strong> E<sub>A</sub> &asymp; |dA/dL| &middot; E<sub>L</sub> = |2L| &middot; E<sub>L</sub>.</p>
+    <p><strong>Paso 2 &mdash; Sustituir:</strong> E<sub>A</sub> &asymp; 2(5.00)(0.02) = 0.20 m&sup2;.</p>
+    <p><strong>Paso 3 &mdash; Error relativo:</strong> A = 25.00 m&sup2;, luego E<sub>r</sub> = 0.20/25.00 = 0.8 %.</p>
+    <p style="margin-bottom:0;"><strong>Conclusi&oacute;n:</strong> el error relativo del lado era 0.02/5.00 = 0.4 %, y el del &aacute;rea es exactamente el doble. Al elevar al cuadrado, <em>el error relativo se duplica</em>.</p>
+  </div>
+
+  <div class="formula-strip">
+    <div><span class="formula-label">Propagaci&oacute;n en una variable</span><p class="formula">E<sub>f</sub> &asymp; | f&prime;(x) | &middot; E<sub>x</sub></p></div>
+    <div><span class="formula-label">Propagaci&oacute;n en varias variables</span><p class="formula">E<sub>f</sub> &asymp; &Sigma; | &part;f/&part;x<sub>i</sub> | &middot; E<sub>x<sub>i</sub></sub></p></div>
+    <div><span class="formula-label">N&uacute;mero de condici&oacute;n</span><p class="formula">&kappa; = | x &middot; f&prime;(x) / f(x) |</p></div>
+  </div>
+  <p>Si &kappa; es grande, el problema est&aacute; <strong>mal condicionado</strong>: un peque&ntilde;o error en los datos produce un gran error en el resultado, y ning&uacute;n algoritmo puede arreglarlo. Si &kappa; es peque&ntilde;o pero el resultado sale mal, el culpable es el algoritmo: se dice que es <strong>inestable</strong>.</p>
+
+  <h2>Videos recomendados</h2>
+  <p class="section-hint">Dos explicaciones distintas del mismo tema: si una no te encaja, prueba la otra.</p>
+  <div class="video-grid">
+    <figure class="video-card">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/vsJrLhQuF4c" title="C&oacute;mo calcular el error absoluto y el error relativo"
+                loading="lazy" allowfullscreen
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <figcaption>
+        <h4>C&oacute;mo calcular el error absoluto y el error relativo</h4>
+        <p class="video-meta">Miguem&aacute;ticas &middot; 5:05</p>
+        <p>Las dos medidas b&aacute;sicas del error, explicadas en cinco minutos.</p>
+        <a href="https://www.youtube.com/watch?v=vsJrLhQuF4c" target="_blank" rel="noopener">Ver en YouTube &rarr;</a>
+      </figcaption>
+    </figure>
+
+    <figure class="video-card">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/97rM1U948JQ" title="Cifras significativas en m&eacute;todos num&eacute;ricos"
+                loading="lazy" allowfullscreen
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <figcaption>
+        <h4>Cifras significativas en m&eacute;todos num&eacute;ricos</h4>
+        <p class="video-meta">Andr&eacute;s M. Barrag&aacute;n &middot; 6:32</p>
+        <p>Reglas para contar cifras significativas y reportar un resultado con honestidad.</p>
+        <a href="https://www.youtube.com/watch?v=97rM1U948JQ" target="_blank" rel="noopener">Ver en YouTube &rarr;</a>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h2>Aplicaciones t&iacute;picas en ingenier&iacute;a</h2>
+  <div class="apps-grid">
+    <div><span class="app-icon">01</span><h4>Topograf&iacute;a</h4><p>El error de cierre de una poligonal es la suma propagada de los errores de cada medida angular y lineal.</p></div>
+    <div><span class="app-icon">02</span><h4>Metrolog&iacute;a</h4><p>Toda calibraci&oacute;n de instrumentos reporta incertidumbre usando estas mismas f&oacute;rmulas de propagaci&oacute;n.</p></div>
+    <div><span class="app-icon">03</span><h4>Dise&ntilde;o mec&aacute;nico</h4><p>El factor de seguridad existe, en parte, para absorber el error propagado de los par&aacute;metros del material.</p></div>
+  </div>
+
+  <h2>Errores comunes</h2>
+  <ul class="common-errors">
+    <li><strong>Reportar m&aacute;s cifras de las justificadas.</strong> Escribir 3.14285714 cuando solo 3 cifras son correctas transmite una precisi&oacute;n que no existe.</li>
+    <li><strong>Usar el error absoluto para juzgar la calidad.</strong> Sin comparar contra la magnitud del valor, el error absoluto no dice nada.</li>
+    <li><strong>Confundir mal condicionamiento con inestabilidad.</strong> El condicionamiento es propiedad del <em>problema</em>; la estabilidad, del <em>algoritmo</em> elegido.</li>
+  </ul>
+
+  <h2>Banco de ejercicios propuestos</h2>
+  <p class="section-hint">Calcula siempre los dos errores: el absoluto y el relativo.</p>
+  <div class="proposed-exercises">
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">1. Se aproxima e = 2.718281828 con 2.71. Calcula error absoluto, relativo y porcentual.</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p>E<sub>a</sub> = |2.718281828 &minus; 2.71| = 0.008281828</p>
+        <p>E<sub>r</sub> = 0.008281828 / 2.718281828 = 0.003047</p>
+        <p>&epsilon;<sub>%</sub> = 0.3047 %</p>
+        <span class="ex-answer">Respuesta: E<sub>a</sub> = 0.008282, E<sub>r</sub> = 0.003047, &epsilon;<sub>%</sub> = 0.3047 % (3 cifras significativas).</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">2. Se mide el radio de un c&iacute;rculo como r = 3.00 cm con error de 0.05 cm. Estima el error del &aacute;rea.</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p>A = &pi;r&sup2;, luego dA/dr = 2&pi;r.</p>
+        <p>E<sub>A</sub> &asymp; 2&pi;(3.00)(0.05) = 0.9425 cm&sup2;.</p>
+        <p>A = &pi;(9) = 28.27 cm&sup2;, as&iacute; que E<sub>r</sub> = 0.9425/28.27 = 3.33 %.</p>
+        <p>Coincide con el doble del error relativo del radio (0.05/3.00 = 1.67 %).</p>
+        <span class="ex-answer">Respuesta: E<sub>A</sub> &asymp; 0.94 cm&sup2;, es decir 3.33 % de error relativo.</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">3. &iquest;Qu&eacute; tolerancia hace falta para garantizar 4 cifras significativas?</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p>Criterio de Scarborough: &epsilon;<sub>a</sub> &lt; 0.5 &times; 10<sup>2&minus;n</sup> %.</p>
+        <p>Con n = 4: 0.5 &times; 10<sup>&minus;2</sup> % = 0.005 %.</p>
+        <span class="ex-answer">Respuesta: &epsilon;<sub>a</sub> &lt; 0.005 %, equivalente a un error relativo de 5 &times; 10<sup>&minus;5</sup>.</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">4. Una serie alternante se trunca en el t&eacute;rmino n. &iquest;C&oacute;mo se acota el error de truncamiento?</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p>Para una serie alternante convergente cuyos t&eacute;rminos decrecen en valor absoluto, el teorema de Leibniz garantiza que el error es menor que el primer t&eacute;rmino omitido.</p>
+        <p>Ejemplo: al aproximar e<sup>&minus;1</sup> con la serie 1 &minus; 1 + 1/2! &minus; 1/3! + &hellip; truncada tras 1/4!, el error es menor que 1/5! = 0.00833.</p>
+        <span class="ex-answer">Respuesta: El error de truncamiento es menor que el valor absoluto del primer t&eacute;rmino descartado.</span>
+      </div>
+    </details>
+
+  </div>
+
+  <h2>Fuentes acad&eacute;micas para profundizar</h2>
+  <ul class="source-links">
+    <li><a href="https://math.libretexts.org/Workbench/Numerical_Methods_with_Applications_(Kaw)/1%3A_Introduction_Approximation_and_Errors" target="_blank" rel="noopener">LibreTexts &mdash; Introduction, Approximation and Errors (Autar Kaw)</a><span>Cap&iacute;tulo abierto con teor&iacute;a de errores, cifras significativas y ejercicios resueltos.</span></li>
+    <li><a href="https://www.bipm.org/en/publications/guides" target="_blank" rel="noopener">BIPM &mdash; Gu&iacute;a para la expresi&oacute;n de la incertidumbre de medida (GUM)</a><span>Documento oficial de metrolog&iacute;a sobre propagaci&oacute;n de incertidumbres.</span></li>
+    <li><a href="https://scholar.google.com/scholar?q=error+propagation+numerical+analysis+condition+number" target="_blank" rel="noopener">Google Acad&eacute;mico &mdash; &laquo;error propagation condition number&raquo;</a><span>Trabajos sobre condicionamiento y estabilidad num&eacute;rica.</span></li>
+  </ul>
+
+  <h2>Para profundizar (bibliograf&iacute;a)</h2>
+  <ul class="ref-list">
+    <li><span class="ref-title">Burden, R. L. &amp; Faires, J. D. &mdash; Numerical Analysis</span>Secci&oacute;n 1.2 y 1.3: definiciones formales de error absoluto, relativo y d&iacute;gitos significativos.</li>
+    <li><span class="ref-title">Chapra, S. C. &amp; Canale, R. P. &mdash; M&eacute;todos num&eacute;ricos para ingenieros</span>Cap&iacute;tulo 3 y 4: errores de redondeo, de truncamiento y an&aacute;lisis de sensibilidad.</li>
+    <li><span class="ref-title">Nieves, A. &amp; Dom&iacute;nguez, F. &mdash; M&eacute;todos num&eacute;ricos aplicados a la ingenier&iacute;a</span>Cap&iacute;tulo introductorio con ejercicios de propagaci&oacute;n del error en espa&ntilde;ol.</li>
+  </ul>
+
+  <div class="detail-actionbar">
+    <a href="../index.php" class="btn btn-ghost">&larr; Volver a la p&aacute;gina principal</a>
+    <a href="../index.php#juegos" class="btn btn-primary">Resolver preguntas de este tema &rarr;</a>
+  </div>
+
+    </div>
+  </div>
+
+  <div class="topic-crossnav">
+    <a href="punto-flotante.html">&larr; Anterior: Aritm&eacute;tica de punto flotante</a>
+    <a href="../index.php#temas">Ver todos los temas</a>
+    <a href="algoritmos-convergencia.html">Siguiente: Algoritmos y convergencia &rarr;</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="max-width:900px; margin:0 auto; border-top:none; padding-top:2.4rem;">
+    <span>&copy; <span id="year"></span> M&eacute;todosNum&eacute;ricos. Proyecto acad&eacute;mico de Ingenier&iacute;a de Sistemas.</span>
+    <a href="../index.php#contacto">Contacto</a>
+    <a href="../proyecto.html">Documentaci&oacute;n del proyecto</a>
+  </div>
+</footer>
+
+<script src="temas.js?v=18"></script>
+<script src="../accessibility.js?v=18"></script>
+</body>
+</html>

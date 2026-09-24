@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de usuario | M&eacute;todos Num&eacute;ricos</title>
+<meta name="description" content="Manual de usuario del aula interactiva de Metodos Numericos: 20 casos de uso numerados, con procedimiento paso a paso y capturas del sistema.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=18">
+</head>
+<body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- ===================== CABECERA ===================== -->
+  <header class="site-header" id="top">
+
+    <!-- Fila 1: barra de utilidades -->
+    <div class="masthead-utility">
+      <div class="masthead-utility-inner">
+        <span class="masthead-course">Aula interactiva &middot; Ingenier&iacute;a de Sistemas</span>
+        <span class="masthead-links">
+          <a href="manual.html">Manual</a>
+          <a href="proyecto.html">Proyecto</a>
+          <a href="index.php#contacto">Contacto</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- Fila 2: mancheta con la marca centrada -->
+    <div class="masthead">
+      <a href="index.php#inicio" class="masthead-brand" aria-label="Inicio &mdash; M&eacute;todos Num&eacute;ricos">
+        <span class="masthead-rule" aria-hidden="true"></span>
+        <span class="masthead-name">M&eacute;todos<em>Num&eacute;ricos</em></span>
+        <span class="masthead-rule" aria-hidden="true"></span>
+      </a>
+      <p class="masthead-tagline">Fundamentos y errores &middot; M&eacute;todos iterativos &middot; Ecuaciones diferenciales</p>
+    </div>
+
+    <!-- Fila 3: navegación principal (queda fija al hacer scroll) -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a href="index.php#inicio" class="navbar-compact" aria-hidden="true" tabindex="-1">M&eacute;todos<em>Num&eacute;ricos</em></a>
+
+        <nav class="main-nav" id="mainNav" aria-label="Navegaci&oacute;n principal">
+          <a href="index.php#inicio">Inicio</a>
+          <div class="nav-dropdown" id="temasDropdown">
+            <button class="nav-dropdown-toggle" id="temasDropdownToggle" aria-expanded="false">
+              Temas
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          <div class="nav-dropdown-menu nav-mega">
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 1 <em>Fundamentos y Teor&iacute;a de Errores</em></span>
+              <a href="temas/metodo-numerico.html"><span class="tag-num">1.1</span> &iquest;Qu&eacute; es un m&eacute;todo num&eacute;rico?</a>
+              <a href="temas/representacion.html"><span class="tag-num">1.2</span> Representaci&oacute;n de n&uacute;meros</a>
+              <a href="temas/punto-flotante.html"><span class="tag-num">1.3</span> Aritm&eacute;tica de punto flotante</a>
+              <a href="temas/errores.html"><span class="tag-num">1.4</span> Errores de redondeo</a>
+              <a href="temas/algoritmos-convergencia.html"><span class="tag-num">1.5</span> Algoritmos y convergencia</a>
+              <a href="temas/python.html"><span class="tag-num">1.6</span> Python para m&eacute;todos num&eacute;ricos</a>
+            </div>
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 2 <em>M&eacute;todos Iterativos y Ra&iacute;ces de Funciones</em></span>
+              <a href="temas/solucion-numerica.html"><span class="tag-num">2.1</span> Soluci&oacute;n num&eacute;rica</a>
+              <a href="temas/convergencia.html"><span class="tag-num">2.2</span> Tasas de convergencia</a>
+              <a href="temas/biseccion.html"><span class="tag-num">2.3</span> M&eacute;todo de bisecci&oacute;n</a>
+              <a href="temas/puntofijo.html"><span class="tag-num">2.4</span> Iteraci&oacute;n de punto fijo</a>
+              <a href="temas/newton.html"><span class="tag-num">2.5</span> M&eacute;todo de Newton</a>
+              <a href="temas/muller.html"><span class="tag-num">2.6</span> M&eacute;todo de Muller</a>
+            </div>
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 3 <em>Ecuaciones Diferenciales Ordinarias</em></span>
+              <a href="temas/euler.html"><span class="tag-num">3.1</span> M&eacute;todo de Euler</a>
+              <a href="temas/taylor.html"><span class="tag-num">3.2</span> M&eacute;todo de Taylor</a>
+              <a href="temas/runge-kutta.html"><span class="tag-num">3.3</span> M&eacute;todo de Runge-Kutta</a>
+              <a href="temas/multipaso.html"><span class="tag-num">3.4</span> M&eacute;todos multipaso</a>
+            </div>
+            <a href="index.php#temas" class="nav-dropdown-all">Ver el mapa completo de los 16 temas &rarr;</a>
+          </div>
+          </div>
+          <a href="index.php#juegos">Actividades</a>
+          <a href="galeria.html">Galer&iacute;a</a>
+          <a href="index.php#certificacion">Certificaci&oacute;n</a>
+          <a href="index.php#nosotros">Acerca de</a>
+          <a href="index.php#bibliografia">Bibliograf&iacute;a</a>
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir men&uacute;">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+<section class="detail-hero">
+  <div class="detail-hero-inner">
+    <p class="breadcrumb"><a href="index.php#inicio">Inicio</a><span>/</span>Manual de usuario</p>
+    <h1>Manual de usuario</h1>
+    <p class="detail-lead">Gu&iacute;a completa de uso del aula interactiva de M&eacute;todos Num&eacute;ricos.
+    Contiene 20 casos de uso numerados, cada uno con su procedimiento paso a paso y una captura del sistema.</p>
+    <dl class="man-meta">
+      <div><dt>Documento</dt><dd>Manual de usuario</dd></div>
+      <div><dt>Versi&oacute;n</dt><dd>1.0</dd></div>
+      <div><dt>Fecha</dt><dd>30 de agosto de 2026</dd></div>
+      <div><dt>Casos de uso</dt><dd>20</dd></div>
+    </dl>
+  </div>
+</section>
+
+<main class="detail-body man-body" id="contenido">
+
+  <!-- ================= 1. INTRODUCCIÓN ================= -->
+  <section class="man-cap" id="cap-1">
+    <p class="section-index"><span class="section-index-num">1</span><span class="section-index-label">Introducci&oacute;n</span></p>
+    <h2>Prop&oacute;sito y alcance</h2>
+
+    <p>Este manual describe c&oacute;mo utilizar el aula interactiva de <strong>M&eacute;todos
+    Num&eacute;ricos</strong>: un sitio web educativo que re&uacute;ne los 16 temas del curso,
+    actividades de pr&aacute;ctica y una evaluaci&oacute;n final con certificado.</p>
+
+    <h3>1.1 A qui&eacute;n va dirigido</h3>
+    <ul class="check-list">
+      <li><strong>Estudiantes</strong> de ingenier&iacute;a que cursan M&eacute;todos Num&eacute;ricos o An&aacute;lisis Num&eacute;rico.</li>
+      <li><strong>Docentes</strong> que quieran usar el sitio como material de apoyo.</li>
+      <li><strong>Responsables del sitio</strong>, para las tareas de gesti&oacute;n del buz&oacute;n de mensajes.</li>
+    </ul>
+
+    <h3>1.2 C&oacute;mo est&aacute; organizado este manual</h3>
+    <ol class="algo-steps">
+      <li><strong>Introducci&oacute;n</strong> &mdash; prop&oacute;sito, destinatarios y convenciones.</li>
+      <li><strong>Requisitos y acceso</strong> &mdash; qu&eacute; hace falta y c&oacute;mo entrar.</li>
+      <li><strong>La interfaz</strong> &mdash; descripci&oacute;n de las zonas comunes a todas las p&aacute;ginas.</li>
+      <li><strong>Casos de uso</strong> &mdash; 20 procedimientos completos, cada uno con su captura.</li>
+      <li><strong>Soluci&oacute;n de problemas</strong> &mdash; qu&eacute; hacer si algo no funciona.</li>
+      <li><strong>Glosario</strong> &mdash; t&eacute;rminos empleados en el sitio.</li>
+    </ol>
+
+    <h3>1.3 Convenciones tipogr&aacute;ficas</h3>
+    <div class="table-wrap">
+      <table class="iter-table">
+        <thead><tr><th>Formato</th><th>Significado</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Negrita</strong></td><td>Elemento de la interfaz que se debe pulsar o localizar</td><td>Pulse <strong>Jugar</strong></td></tr>
+          <tr><td><em>Cursiva</em></td><td>Nombre de una secci&oacute;n o de una opci&oacute;n</td><td>Secci&oacute;n <em>Actividades</em></td></tr>
+          <tr><td><code>Monoespaciada</code></td><td>Direcci&oacute;n, archivo o valor literal</td><td><code>index.php</code></td></tr>
+          <tr><td><kbd>Tecla</kbd></td><td>Tecla del teclado</td><td><kbd>Tab</kbd></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="man-nota man-nota-nota">
+      <span class="man-nota-icono" aria-hidden="true">&#9432;</span>
+      <div><strong>Nota.</strong> A lo largo del manual encontrar&aacute; tres tipos de aviso:
+      <strong>Nota</strong> (informaci&oacute;n complementaria),
+      <strong>Importante</strong> (algo que conviene tener en cuenta para no perder datos o cometer un error) y
+      <strong>Sugerencia</strong> (atajos y buenas pr&aacute;cticas).</div>
+    </div>
+  </section>
+
+  <!-- ================= 2. REQUISITOS ================= -->
+  <section class="man-cap" id="cap-2">
+    <p class="section-index"><span class="section-index-num">2</span><span class="section-index-label">Requisitos</span></p>
+    <h2>Requisitos y acceso</h2>
+
+    <h3>2.1 Requisitos del sistema</h3>
+    <div class="table-wrap">
+      <table class="iter-table">
+        <thead><tr><th>Elemento</th><th>Requisito</th><th>Observaci&oacute;n</th></tr></thead>
+        <tbody>
+          <tr><td>Navegador</td><td>Chrome, Edge, Firefox o Safari en versi&oacute;n reciente</td><td>Debe permitir JavaScript</td></tr>
+          <tr><td>Resoluci&oacute;n</td><td>Desde 375 px de ancho</td><td>Verificado hasta 1440 px</td></tr>
+          <tr><td>Conexi&oacute;n</td><td>Necesaria para las tipograf&iacute;as y los videos</td><td>El resto del sitio funciona sin conexi&oacute;n</td></tr>
+          <tr><td>Servidor</td><td>Apache con PHP 8 (XAMPP)</td><td>Solo para el formulario y el env&iacute;o del certificado</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>2.2 C&oacute;mo acceder</h3>
+    <ol class="algo-steps">
+      <li>Copie la carpeta del proyecto dentro de <code>htdocs</code>: <code>C:\xampp\htdocs\metodos</code>.</li>
+      <li>Abra el panel de control de XAMPP e inicie <strong>Apache</strong>. No hace falta MySQL.</li>
+      <li>En el navegador, escriba <code>http://localhost/metodos/</code>.</li>
+    </ol>
+
+    <div class="man-nota man-nota-aviso">
+      <span class="man-nota-icono" aria-hidden="true">&#9888;</span>
+      <div><strong>Importante.</strong> Si el sitio se ve sin estilos o con una versi&oacute;n antigua,
+      es la cach&eacute; del navegador: pulse <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>F5</kbd>.
+      Si no carga nada, compruebe que <strong>Apache est&eacute; iniciado</strong> en XAMPP.</div>
+    </div>
+  </section>
+
+  <!-- ================= 3. LA INTERFAZ ================= -->
+  <section class="man-cap" id="cap-3">
+    <p class="section-index"><span class="section-index-num">3</span><span class="section-index-label">La interfaz</span></p>
+    <h2>Zonas comunes a todas las p&aacute;ginas</h2>
+
+    <p>Todas las p&aacute;ginas del sitio comparten la misma estructura, de modo que una vez
+    aprendida sirve para cualquier secci&oacute;n.</p>
+
+    <figure class="man-figura">
+      <img src="capturas/01-inicio.jpg" alt="P&aacute;gina de inicio completa con la cabecera de tres filas, el titular y las tarjetas de los tres bloques" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 0</span> P&aacute;gina de inicio. La cabecera consta de tres filas: utilidades, nombre del sitio y navegaci&oacute;n.</figcaption>
+    </figure>
+
+    <div class="table-wrap">
+      <table class="iter-table">
+        <thead><tr><th>Zona</th><th>Ubicaci&oacute;n</th><th>Contenido</th></tr></thead>
+        <tbody>
+          <tr><td>Barra de utilidades</td><td>Franja superior oscura</td><td>Accesos al manual, la documentaci&oacute;n y el contacto</td></tr>
+          <tr><td>Nombre del sitio</td><td>Centrado, bajo la barra</td><td>Enlace a la p&aacute;gina de inicio</td></tr>
+          <tr><td>Barra de navegaci&oacute;n</td><td>Bajo el nombre</td><td>Las siete secciones principales. Queda fija al bajar</td></tr>
+          <tr><td>Contenido</td><td>Centro de la p&aacute;gina</td><td>Var&iacute;a seg&uacute;n la secci&oacute;n</td></tr>
+          <tr><td>Bot&oacute;n de accesibilidad</td><td>Esquina inferior derecha</td><td>Tama&ntilde;o de letra, contraste y lectura en voz alta</td></tr>
+          <tr><td>Pie de p&aacute;gina</td><td>Final</td><td>Navegaci&oacute;n, bloques, contacto y aviso de autor&iacute;a</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 4. CASOS DE USO ================= -->
+  <section class="man-cap" id="cap-4">
+    <p class="section-index"><span class="section-index-num">4</span><span class="section-index-label">Casos de uso</span></p>
+    <h2>Los 20 casos de uso del sistema</h2>
+    <p class="section-lead">Cada caso describe una tarea completa: qui&eacute;n la realiza, qu&eacute; necesita
+    antes de empezar, los pasos exactos, una captura del sistema y el resultado que debe obtener.</p>
+
+    <nav class="man-toc" aria-label="&Iacute;ndice de casos de uso">
+      <p class="man-toc-title">&Iacute;ndice de casos de uso</p>
+      <div class="man-toc-grid">
+        <a class="man-toc-row" href="#CU-01"><span class="man-toc-id">CU-01</span><span class="man-toc-name">Recorrer el sitio y localizar un tema</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-02"><span class="man-toc-id">CU-02</span><span class="man-toc-name">Consultar la tabla de contenidos del curso</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-03"><span class="man-toc-id">CU-03</span><span class="man-toc-name">Estudiar un tema</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-04"><span class="man-toc-id">CU-04</span><span class="man-toc-name">Ver los videos explicativos de un tema</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-05"><span class="man-toc-id">CU-05</span><span class="man-toc-name">Elegir el nivel de dificultad</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-06"><span class="man-toc-id">CU-06</span><span class="man-toc-name">Jugar el cuestionario de un bloque tem&aacute;tico</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-07"><span class="man-toc-id">CU-07</span><span class="man-toc-name">Interpretar el resultado y la medalla</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-08"><span class="man-toc-id">CU-08</span><span class="man-toc-name">Practicar un tema concreto</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-09"><span class="man-toc-id">CU-09</span><span class="man-toc-name">Jugar &laquo;Empareja&raquo;</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-10"><span class="man-toc-id">CU-10</span><span class="man-toc-name">Jugar el Desaf&iacute;o contrarreloj</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-11"><span class="man-toc-id">CU-11</span><span class="man-toc-name">Jugar &laquo;Esquiva y Responde&raquo;</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-12"><span class="man-toc-id">CU-12</span><span class="man-toc-name">Consultar el progreso y repasar los fallos</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-13"><span class="man-toc-id">CU-13</span><span class="man-toc-name">Presentar la evaluaci&oacute;n final</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-14"><span class="man-toc-id">CU-14</span><span class="man-toc-name">Descargar o recibir el certificado</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-15"><span class="man-toc-id">CU-15</span><span class="man-toc-name">Enviar un mensaje de contacto</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-16"><span class="man-toc-id">CU-16</span><span class="man-toc-name">Corregir errores del formulario</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-17"><span class="man-toc-id">CU-17</span><span class="man-toc-name">Consultar el buz&oacute;n de sugerencias</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-18"><span class="man-toc-id">CU-18</span><span class="man-toc-name">Explorar la galer&iacute;a de diagramas</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-19"><span class="man-toc-id">CU-19</span><span class="man-toc-name">Ajustar la accesibilidad</span><span class="toc-line" aria-hidden="true"></span></a>
+        <a class="man-toc-row" href="#CU-20"><span class="man-toc-id">CU-20</span><span class="man-toc-name">Usar el sitio en el tel&eacute;fono</span><span class="toc-line" aria-hidden="true"></span></a>
+      </div>
+    </nav>
+  </section>
+
+  <section class="man-caso" id="CU-01">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-01</span>
+      <h3>Recorrer el sitio y localizar un tema</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Cualquier visitante</dd></div>
+      <div><dt>Objetivo</dt><dd>Encontrar r&aacute;pidamente el tema que se quiere estudiar entre los 16 disponibles.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Tener el sitio abierto en <code>http://localhost/metodos/</code>.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Observe la <strong>cabecera</strong>. La fila superior (petr&oacute;leo) contiene accesos a <em>Manual</em>, <em>Proyecto</em> y <em>Contacto</em>; debajo est&aacute; el nombre del sitio y, m&aacute;s abajo, la barra de navegaci&oacute;n.</li>
+        <li>Sit&uacute;e el cursor sobre <strong>TEMAS</strong> y haga clic. Se despliega un men&uacute; con los 16 temas repartidos en tres bloques tem&aacute;ticos.</li>
+        <li>Haga clic en el tema que desee estudiar. Cada entrada muestra su numeraci&oacute;n (<code>1.1</code>, <code>2.3</code>, <code>3.4</code>&hellip;).</li>
+        <li>Si prefiere ver todo de un vistazo, cierre el men&uacute; y baje hasta la secci&oacute;n <strong>Tabla de contenidos</strong> de la portada.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/03-menu-temas.jpg" alt="Men&uacute; Temas desplegado, mostrando los 16 temas agrupados en tres bloques tem&aacute;ticos" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 1</span> El men&uacute; <em>Temas</em> desplegado. Los tres bloques aparecen en columnas y cada tema lleva su n&uacute;mero de orden.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">El navegador abre la p&aacute;gina del tema seleccionado.</p>
+
+      <div class="man-nota man-nota-truco">
+        <span class="man-nota-icono" aria-hidden="true">&#9733;</span>
+        <div><strong>Sugerencia.</strong> Al bajar por la p&aacute;gina, la mancheta se desliza hacia arriba y solo queda fija la barra de navegaci&oacute;n, con el nombre del sitio en peque&ntilde;o a la izquierda. As&iacute; el men&uacute; siempre est&aacute; a mano sin ocupar espacio.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-02">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-02</span>
+      <h3>Consultar la tabla de contenidos del curso</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Ver los 16 temas en orden y entender la progresi&oacute;n del curso.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Estar en la p&aacute;gina de inicio.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Baje hasta la secci&oacute;n <strong>Tabla de contenidos</strong>, justo debajo de la portada.</li>
+        <li>Recorra la lista: los temas se presentan en dos columnas, numerados de <code>1.1</code> a <code>3.4</code>.</li>
+        <li>Haga clic sobre cualquier fila para abrir ese tema.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/02-indice.jpg" alt="Tabla de contenidos del curso con los 16 temas numerados en dos columnas" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 2</span> &Iacute;ndice completo del curso. La numeraci&oacute;n indica bloque y posici&oacute;n: <code>2.3</code> es el tercer tema del segundo bloque.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">Se abre la p&aacute;gina del tema elegido.</p>
+
+
+  </section>
+
+  <section class="man-caso" id="CU-03">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-03</span>
+      <h3>Estudiar un tema</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Leer la teor&iacute;a de un tema y moverse entre sus apartados sin perderse.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Haber abierto la p&aacute;gina de un tema (v&eacute;ase CU-01).</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Lea la <strong>introducci&oacute;n</strong>, en la parte superior, que resume la idea central del m&eacute;todo.</li>
+        <li>Utilice el <strong>sumario lateral</strong> de la izquierda para saltar a cualquier apartado: <em>Idea central</em>, <em>Algoritmo</em>, <em>Ejercicio resuelto</em>, <em>Errores comunes</em>&hellip;</li>
+        <li>A medida que avanza en la lectura, el apartado en el que se encuentra queda <strong>resaltado en terracota</strong> dentro del sumario.</li>
+        <li>Consulte la <strong>tabla de iteraciones</strong> del ejercicio resuelto: cada fila es un paso del m&eacute;todo, con su error frente al valor exacto.</li>
+        <li>Al final de la p&aacute;gina encontrar&aacute; el <strong>banco de ejercicios propuestos</strong>. Pulse <em>&iquest;Ver ejercicio resuelto?</em> para desplegar la soluci&oacute;n paso a paso.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/05-tema-detalle.jpg" alt="P&aacute;gina de un tema con el sumario lateral a la izquierda y el contenido a la derecha" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 3</span> Estructura de una p&aacute;gina de tema: sumario fijo a la izquierda, contenido a la derecha.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">El estudiante puede recorrer todo el tema y volver a cualquier apartado con un clic.</p>
+
+      <div class="man-nota man-nota-nota">
+        <span class="man-nota-icono" aria-hidden="true">&#9432;</span>
+        <div><strong>Nota.</strong> El bot&oacute;n <strong>Practicar este tema</strong>, al pie del sumario, lleva directamente a la secci&oacute;n de actividades.</div>
+      </div>
+      <div class="man-nota man-nota-truco">
+        <span class="man-nota-icono" aria-hidden="true">&#9733;</span>
+        <div><strong>Sugerencia.</strong> En pantallas menores de 960&nbsp;px el sumario se convierte en una tira horizontal desplazable situada encima del contenido.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-04">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-04</span>
+      <h3>Ver los videos explicativos de un tema</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Complementar la lectura con una explicaci&oacute;n en video.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Estar en la p&aacute;gina de un tema.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>En el sumario lateral, pulse <strong>Videos recomendados</strong>.</li>
+        <li>Cada tema ofrece <strong>dos videos distintos</strong> del mismo contenido. Bajo cada uno se indica el canal y la duraci&oacute;n.</li>
+        <li>Pulse el bot&oacute;n de reproducci&oacute;n para verlo incrustado, o <em>Ver en YouTube</em> para abrirlo en una pesta&ntilde;a nueva.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/06-tema-sumario.jpg" alt="Sumario lateral con el apartado activo resaltado mientras se recorre el tema" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 4</span> El sumario resalta el apartado que se est&aacute; leyendo, de modo que siempre se sabe en qu&eacute; punto del tema se est&aacute;.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">El video se reproduce dentro de la p&aacute;gina.</p>
+
+      <div class="man-nota man-nota-nota">
+        <span class="man-nota-icono" aria-hidden="true">&#9432;</span>
+        <div><strong>Nota.</strong> Se ofrecen dos videos por tema a prop&oacute;sito: si una explicaci&oacute;n no resulta clara, la otra plantea el mismo m&eacute;todo de forma distinta.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-05">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-05</span>
+      <h3>Elegir el nivel de dificultad</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Ajustar el tiempo por pregunta y el n&uacute;mero de vidas antes de jugar.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Estar en la secci&oacute;n <strong>Actividades</strong> de la portada.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Localice la barra <strong>Dificultad</strong>, encima de las tarjetas de juego.</li>
+        <li>Elija una de las tres opciones:</li>
+        <li>La selecci&oacute;n <strong>queda guardada en su navegador</strong> y se aplica a todos los juegos hasta que la cambie.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/07-actividades.jpg" alt="Secci&oacute;n Actividades con el selector de dificultad y las tarjetas de juego por bloque" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 5</span> Secci&oacute;n de actividades: selector de dificultad, un juego por bloque tem&aacute;tico y pr&aacute;ctica tema por tema.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">Los siguientes juegos usar&aacute;n el nivel elegido.</p>
+
+      <div class="man-nota man-nota-nota">
+        <span class="man-nota-icono" aria-hidden="true">&#9432;</span>
+        <div><strong>Nota.</strong> <strong>F&aacute;cil:</strong> 30&nbsp;s por pregunta y 5 vidas &middot; <strong>Normal:</strong> 20&nbsp;s y 3 vidas &middot; <strong>Dif&iacute;cil:</strong> 12&nbsp;s y 2 vidas.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-06">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-06</span>
+      <h3>Jugar el cuestionario de un bloque tem&aacute;tico</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Poner a prueba lo aprendido en uno de los tres bloques del curso.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Haber elegido la dificultad (CU-05), o dejar la que viene por defecto.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Pulse el bot&oacute;n <strong>Jugar</strong> de la tarjeta del bloque que quiera practicar. Se abre una ventana con 10 preguntas tomadas al azar.</li>
+        <li>Observe el <strong>marcador</strong> superior: vidas (&hearts;), racha de aciertos, puntos acumulados y el cron&oacute;metro circular de la pregunta.</li>
+        <li>Lea la pregunta y pulse la opci&oacute;n que considere correcta <strong>antes de que se agote el cron&oacute;metro</strong>. Si se agota, cuenta como fallo.</li>
+        <li>Aparece de inmediato si acert&oacute; y una breve explicaci&oacute;n del porqu&eacute;.</li>
+        <li>La barra de segmentos bajo el marcador muestra su recorrido: verde para acierto, rojo para fallo.</li>
+        <li>Pulse <strong>Ver siguiente ahora</strong> para avanzar sin esperar la cuenta atr&aacute;s.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/08-quiz.jpg" alt="Ventana del cuestionario con el marcador de vidas, racha, puntos y cron&oacute;metro circular" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 6</span> Cuestionario en curso. Arriba: vidas, racha, puntos y cron&oacute;metro. Debajo, la barra de segmentos con el avance.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">Al terminar las 10 preguntas &mdash; o al quedarse sin vidas &mdash; se muestra el resultado.</p>
+
+      <div class="man-nota man-nota-aviso">
+        <span class="man-nota-icono" aria-hidden="true">&#9888;</span>
+        <div><strong>Importante.</strong> Si pierde todas las vidas, la partida <strong>termina antes de tiempo</strong>. Las preguntas se vuelven a mezclar en cada intento, as&iacute; que no se repite la misma serie.</div>
+      </div>
+      <div class="man-nota man-nota-truco">
+        <span class="man-nota-icono" aria-hidden="true">&#9733;</span>
+        <div><strong>Sugerencia.</strong> Cada acierto vale 100 puntos base, m&aacute;s un extra por responder r&aacute;pido y otro por racha. A partir de tres aciertos seguidos aparece el s&iacute;mbolo de racha.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-07">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-07</span>
+      <h3>Interpretar el resultado y la medalla</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Entender la puntuaci&oacute;n obtenida y decidir el siguiente paso.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Haber terminado una partida (CU-06).</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Al terminar se muestra la <strong>medalla</strong> obtenida seg&uacute;n el porcentaje de aciertos.</li>
+        <li>Debajo aparecen las respuestas correctas, los puntos totales, la mejor racha y la dificultad usada.</li>
+        <li>Se indica si ha batido su <strong>r&eacute;cord</strong> anterior en ese juego.</li>
+        <li>Pulse <strong>Repetir juego</strong> para otra ronda, o <strong>Repasar mis fallos</strong> para practicar solo con las preguntas que ha fallado.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/09-quiz-resultado.jpg" alt="Pantalla de resultado con la medalla obtenida, la puntuaci&oacute;n y el r&eacute;cord" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 7</span> Resultado de la partida: medalla, aciertos, puntos, mejor racha y r&eacute;cord.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">El progreso queda registrado y el panel de progreso se actualiza.</p>
+
+      <div class="man-nota man-nota-nota">
+        <span class="man-nota-icono" aria-hidden="true">&#9432;</span>
+        <div><strong>Nota.</strong> Escala de medallas: <strong>Bronce</strong> desde 50&nbsp;%, <strong>Plata</strong> desde 70&nbsp;%, <strong>Oro</strong> desde 85&nbsp;% y <strong>Platino</strong> con el 100&nbsp;%. A partir de oro se lanza una animaci&oacute;n de celebraci&oacute;n.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-08">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-08</span>
+      <h3>Practicar un tema concreto</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Repasar un &uacute;nico tema en lugar de un bloque completo.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Estar en la secci&oacute;n <strong>Actividades</strong>.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Bajo las tarjetas de bloque, localice el grupo <strong>Tambi&eacute;n puedes practicar tema por tema</strong>.</li>
+        <li>Pulse el bot&oacute;n del tema que quiera repasar. Hay uno por cada uno de los 16 temas.</li>
+        <li>El juego funciona igual que el de bloque, pero con las 5 preguntas de ese tema.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/07-actividades.jpg" alt="Botones de pr&aacute;ctica tema por tema, uno para cada uno de los 16 temas" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 8</span> Los 16 botones de pr&aacute;ctica individual, debajo de las tarjetas de bloque.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">Se abre el cuestionario del tema elegido.</p>
+
+
+  </section>
+
+  <section class="man-caso" id="CU-09">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-09</span>
+      <h3>Jugar &laquo;Empareja&raquo;</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Asociar cada concepto con su f&oacute;rmula o definici&oacute;n, contrarreloj.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Estar en la secci&oacute;n <strong>Actividades</strong>.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Baje hasta <strong>Empareja cada concepto con su f&oacute;rmula</strong> y pulse la tarjeta del bloque deseado.</li>
+        <li>Se abren dos columnas: <strong>conceptos</strong> a la izquierda y <strong>f&oacute;rmulas</strong> a la derecha, en desorden.</li>
+        <li>Pulse un concepto de la izquierda; quedar&aacute; marcado.</li>
+        <li>Pulse la f&oacute;rmula que le corresponde. Si acierta, la pareja se marca en verde y desaparece del juego.</li>
+        <li>Si falla, ambas fichas parpadean en rojo, suma un error y puede volver a intentarlo.</li>
+        <li>Complete las seis parejas lo m&aacute;s r&aacute;pido posible.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/10-emparejar.jpg" alt="Juego Empareja con dos columnas de fichas: conceptos a la izquierda y f&oacute;rmulas a la derecha" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 9</span> Juego de emparejar. Arriba se muestran las parejas resueltas, los errores y el tiempo transcurrido.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">Al completar las seis parejas se muestra el tiempo final y la medalla obtenida.</p>
+
+      <div class="man-nota man-nota-aviso">
+        <span class="man-nota-icono" aria-hidden="true">&#9888;</span>
+        <div><strong>Importante.</strong> Cada error suma <strong>3 segundos de penalizaci&oacute;n</strong> al tiempo final. El mejor tiempo de cada bloque queda guardado como r&eacute;cord.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-10">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-10</span>
+      <h3>Jugar el Desaf&iacute;o contrarreloj</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Responder el mayor n&uacute;mero de preguntas en 60 segundos.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Estar en la secci&oacute;n <strong>Actividades</strong>.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Pulse <strong>Jugar el Desaf&iacute;o</strong>. Se abre una pantalla de juego independiente.</li>
+        <li>Lea las instrucciones y pulse el bot&oacute;n de inicio.</li>
+        <li>Responda tan r&aacute;pido como pueda: dispone de <strong>60 segundos</strong> en total.</li>
+        <li>Cada acierto encadenado aumenta el <strong>combo</strong> y multiplica los puntos; un fallo lo reinicia.</li>
+        <li>Al acabar el tiempo se muestra su puntuaci&oacute;n y su r&eacute;cord personal.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/18-desafio.jpg" alt="Pantalla de inicio del juego Desaf&iacute;o contrarreloj" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 10</span> Pantalla de inicio del Desaf&iacute;o. Las preguntas se mezclan de los tres bloques del curso.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">Se registra la puntuaci&oacute;n y, si procede, un nuevo r&eacute;cord.</p>
+
+      <div class="man-nota man-nota-nota">
+        <span class="man-nota-icono" aria-hidden="true">&#9432;</span>
+        <div><strong>Nota.</strong> El r&eacute;cord se guarda en su navegador. Para volver al sitio pulse <em>Salir del desaf&iacute;o</em>, arriba a la derecha.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-11">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-11</span>
+      <h3>Jugar &laquo;Esquiva y Responde&raquo;</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Repasar con un juego de habilidad y preguntas de verdadero o falso.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Estar en la secci&oacute;n <strong>Actividades</strong>.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Pulse <strong>Jugar Esquiva y Responde</strong>.</li>
+        <li>Mueva el personaje entre los tres carriles para <strong>esquivar las rocas</strong> que caen.</li>
+        <li>Cada cierto tiempo aparece una pregunta de <strong>Verdadero o Falso</strong>: mu&eacute;vase al carril izquierdo para <em>Verdadero</em> o al derecho para <em>Falso</em>.</li>
+        <li>Mientras responde no caen rocas nuevas. Cuantas m&aacute;s esquive, m&aacute;s preguntas responder&aacute;.</li>
+        <li>La velocidad aumenta con el tiempo.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/19-esquiva.jpg" alt="Pantalla de inicio del juego Esquiva y Responde con las instrucciones" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 11</span> Instrucciones del juego arcade. Se controla con las flechas del teclado o tocando la pantalla.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">Al perder se muestra la puntuaci&oacute;n alcanzada.</p>
+
+
+  </section>
+
+  <section class="man-caso" id="CU-12">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-12</span>
+      <h3>Consultar el progreso y repasar los fallos</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Saber qu&eacute; parte del curso domina y practicar solo lo que falla.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Haber jugado al menos una partida.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Baje hasta el bloque <strong>Tu progreso</strong>, al final de la secci&oacute;n de actividades.</li>
+        <li>Cada bloque tem&aacute;tico muestra un anillo con el <strong>porcentaje de dominio</strong>: la proporci&oacute;n de preguntas que ha respondido bien al menos una vez.</li>
+        <li>Bajo el porcentaje aparece su r&eacute;cord de puntos en ese bloque.</li>
+        <li>Si tiene preguntas falladas pendientes, aparece la franja <strong>Repaso inteligente</strong> con su n&uacute;mero.</li>
+        <li>Pulse <strong>Repasar mis fallos</strong> para jugar &uacute;nicamente con esas preguntas. Cuando acierte una, sale de la lista.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/11-progreso.jpg" alt="Panel de progreso con tres anillos de porcentaje por bloque y la franja de repaso inteligente" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 12</span> Panel de progreso. Los anillos indican el dominio de cada bloque; abajo, las preguntas pendientes de repaso.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">El estudiante identifica sus puntos d&eacute;biles y practica dirigidamente.</p>
+
+      <div class="man-nota man-nota-nota">
+        <span class="man-nota-icono" aria-hidden="true">&#9432;</span>
+        <div><strong>Nota.</strong> Toda esta informaci&oacute;n se guarda <strong>&uacute;nicamente en su navegador</strong>. No se env&iacute;a a ning&uacute;n servidor ni la ve nadie m&aacute;s.</div>
+      </div>
+      <div class="man-nota man-nota-aviso">
+        <span class="man-nota-icono" aria-hidden="true">&#9888;</span>
+        <div><strong>Importante.</strong> El bot&oacute;n <strong>Reiniciar progreso</strong> borra de forma permanente las preguntas dominadas, los fallos pendientes y los r&eacute;cords. Pide confirmaci&oacute;n antes de hacerlo.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-13">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-13</span>
+      <h3>Presentar la evaluaci&oacute;n final</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Superar el reto final para obtener el certificado.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Haber estudiado los temas. Se recomienda alcanzar al menos el 70&nbsp;% de dominio (CU-12).</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Vaya a la secci&oacute;n <strong>Certificaci&oacute;n</strong> desde el men&uacute; principal.</li>
+        <li>Lea el panel <strong>Antes de empezar</strong>: 15 preguntas, 80&nbsp;% para aprobar, intentos ilimitados.</li>
+        <li>Escriba su <strong>nombre completo</strong> tal como quiere que aparezca impreso. La vista previa de la derecha muestra c&oacute;mo quedar&aacute;.</li>
+        <li>Escriba su <strong>correo electr&oacute;nico</strong>.</li>
+        <li>Pulse <strong>Iniciar la evaluaci&oacute;n</strong>.</li>
+        <li>Responda las 15 preguntas. La barra de segmentos indica su avance en verde y rojo.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/12-certificacion.jpg" alt="Secci&oacute;n de certificaci&oacute;n con el panel de reglas y el formulario de datos" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 13</span> Antes de empezar: a la izquierda las reglas del examen, a la derecha el formulario con la vista previa del nombre.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">Se muestra el resultado: aprobado (&ge;&nbsp;80&nbsp;%) o no aprobado.</p>
+
+      <div class="man-nota man-nota-aviso">
+        <span class="man-nota-icono" aria-hidden="true">&#9888;</span>
+        <div><strong>Importante.</strong> Si el correo no tiene un formato v&aacute;lido, el campo se marca en rojo y <strong>la evaluaci&oacute;n no comienza</strong> hasta corregirlo.</div>
+      </div>
+      <div class="man-nota man-nota-nota">
+        <span class="man-nota-icono" aria-hidden="true">&#9432;</span>
+        <div><strong>Nota.</strong> Sus datos se usan solo para escribir el certificado y envi&aacute;rselo. No se guardan en ninguna lista.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-14">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-14</span>
+      <h3>Descargar o recibir el certificado</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante que ha aprobado</dd></div>
+      <div><dt>Objetivo</dt><dd>Obtener el certificado en formato de imagen.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Haber obtenido el 80&nbsp;% o m&aacute;s en la evaluaci&oacute;n (CU-13).</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Al aprobar aparece la insignia <strong>APROBADO</strong> con su puntaje.</li>
+        <li>Debajo se genera el <strong>certificado</strong> con su nombre, los bloques del curso, el puntaje y la fecha.</li>
+        <li>Pulse <strong>Descargar certificado (PNG)</strong> para guardarlo en su equipo.</li>
+        <li>O pulse <strong>Enviar a mi correo</strong> para recibirlo como archivo adjunto en la direcci&oacute;n indicada.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/14-certificado.jpg" alt="Certificado generado con el nombre del estudiante, el puntaje obtenido y la fecha" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 14</span> Certificado generado autom&aacute;ticamente. Se dibuja en el navegador con el nombre introducido.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">El estudiante conserva el certificado como imagen.</p>
+
+      <div class="man-nota man-nota-nota">
+        <span class="man-nota-icono" aria-hidden="true">&#9432;</span>
+        <div><strong>Nota.</strong> Si no alcanza el 80&nbsp;%, el sitio muestra la lista de <strong>temas a repasar</strong> seg&uacute;n las preguntas falladas, y permite reintentar cuantas veces quiera con preguntas distintas.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-15">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-15</span>
+      <h3>Enviar un mensaje de contacto</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Cualquier visitante</dd></div>
+      <div><dt>Objetivo</dt><dd>Reportar un error del contenido, resolver una duda o proponer una mejora.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Estar en la p&aacute;gina de inicio.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Vaya a la secci&oacute;n <strong>Contacto</strong> desde el men&uacute; o desde el pie de p&aacute;gina.</li>
+        <li>Complete <strong>Nombre completo</strong> y <strong>Correo electr&oacute;nico</strong>.</li>
+        <li>Elija un <strong>Asunto</strong> de la lista: duda sobre un tema, error en el contenido, problema t&eacute;cnico, problema con el certificado, sugerencia u otro.</li>
+        <li>Escriba el <strong>mensaje</strong>. El contador bajo el campo indica cu&aacute;ntos caracteres lleva de los 1000 disponibles.</li>
+        <li>Pulse <strong>Enviar mensaje</strong>.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/15-contacto.jpg" alt="Secci&oacute;n de contacto con los datos del proyecto a la izquierda y el formulario a la derecha" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 15</span> Secci&oacute;n de contacto: a la izquierda los datos del proyecto; a la derecha, el formulario.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">Aparece una confirmaci&oacute;n con su nombre y el mensaje queda registrado en el buz&oacute;n del sitio.</p>
+
+      <div class="man-nota man-nota-nota">
+        <span class="man-nota-icono" aria-hidden="true">&#9432;</span>
+        <div><strong>Nota.</strong> Los campos se validan al salir de cada uno. Si algo falta o est&aacute; mal escrito, el campo se marca en rojo indicando exactamente qu&eacute; corregir.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-16">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-16</span>
+      <h3>Corregir errores del formulario</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Cualquier visitante</dd></div>
+      <div><dt>Objetivo</dt><dd>Entender e interpretar los avisos de validaci&oacute;n.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Estar completando el formulario de contacto (CU-15).</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Si intenta enviar con datos incompletos, los campos afectados se marcan en <strong>rojo</strong>.</li>
+        <li>Bajo cada campo aparece el motivo concreto: nombre demasiado corto, correo con formato inv&aacute;lido, asunto sin elegir o mensaje demasiado breve.</li>
+        <li>Corrija los campos se&ntilde;alados. El aviso desaparece en cuanto el dato es v&aacute;lido.</li>
+        <li>Vuelva a pulsar <strong>Enviar mensaje</strong>.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/16-contacto-error.jpg" alt="Formulario de contacto mostrando los mensajes de error bajo los campos incompletos" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 16</span> Validaci&oacute;n en l&iacute;nea: cada campo indica exactamente qu&eacute; se debe corregir.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">El formulario se env&iacute;a cuando todos los campos son v&aacute;lidos.</p>
+
+
+  </section>
+
+  <section class="man-caso" id="CU-17">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-17</span>
+      <h3>Consultar el buz&oacute;n de sugerencias</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Responsable del sitio</dd></div>
+      <div><dt>Objetivo</dt><dd>Leer y gestionar los mensajes recibidos por el formulario de contacto.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Tener acceso a la direcci&oacute;n <code>buzon.php</code>.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Abra el enlace <strong>Buz&oacute;n de sugerencias</strong> del pie de p&aacute;gina.</li>
+        <li>Se muestra el total de mensajes y cu&aacute;ntos est&aacute;n sin leer.</li>
+        <li>Cada tarjeta muestra el remitente, su correo, la fecha y el asunto elegido.</li>
+        <li>Pulse <strong>Marcar le&iacute;da</strong> para quitarle la etiqueta de nuevo, o <strong>Eliminar</strong> para borrarlo.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/20-buzon.jpg" alt="Buz&oacute;n de sugerencias mostrando el resumen de mensajes recibidos" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 17</span> Buz&oacute;n de sugerencias. Los mensajes se guardan en <code>data/sugerencias.json</code>.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">El responsable gestiona los mensajes recibidos.</p>
+
+      <div class="man-nota man-nota-aviso">
+        <span class="man-nota-icono" aria-hidden="true">&#9888;</span>
+        <div><strong>Importante.</strong> En la versi&oacute;n actual el buz&oacute;n <strong>no pide contrase&ntilde;a</strong>. Antes de publicar el sitio en un servidor accesible desde internet, conviene protegerlo.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-18">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-18</span>
+      <h3>Explorar la galer&iacute;a de diagramas</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Estudiante</dd></div>
+      <div><dt>Objetivo</dt><dd>Repasar visualmente la idea central de cada m&eacute;todo.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Ninguna.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Pulse <strong>Galer&iacute;a</strong> en la barra de navegaci&oacute;n.</li>
+        <li>Use los filtros superiores para mostrar solo los diagramas de un bloque tem&aacute;tico.</li>
+        <li>Cada diagrama incluye un pie que explica qu&eacute; representa.</li>
+        <li>Pulse <strong>Ir al tema completo</strong> para abrir la p&aacute;gina correspondiente.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/17-galeria.jpg" alt="Galer&iacute;a de diagramas con los filtros por bloque tem&aacute;tico en la parte superior" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 18</span> Galer&iacute;a de nueve diagramas. Todos son gr&aacute;ficos vectoriales, por lo que se ven n&iacute;tidos a cualquier tama&ntilde;o.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">El estudiante repasa visualmente los m&eacute;todos.</p>
+
+
+  </section>
+
+  <section class="man-caso" id="CU-19">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-19</span>
+      <h3>Ajustar la accesibilidad</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Cualquier visitante</dd></div>
+      <div><dt>Objetivo</dt><dd>Adaptar la presentaci&oacute;n a las necesidades de lectura de cada persona.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Ninguna.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>Pulse el bot&oacute;n <strong>Aa Accesibilidad</strong>, fijo en la esquina inferior derecha de todas las p&aacute;ginas.</li>
+        <li>Ajuste el <strong>tama&ntilde;o de letra</strong> con los botones A&minus; y A+ (cuatro niveles).</li>
+        <li>Elija un <strong>modo de color</strong>: normal, alto contraste, oscuro o lectura f&aacute;cil.</li>
+        <li>Utilice la <strong>lectura en voz alta</strong> si desea escuchar el contenido.</li>
+        <li>Pulse <strong>Restablecer</strong> para volver a la presentaci&oacute;n original.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/22-accesibilidad.jpg" alt="Panel de accesibilidad abierto con las opciones de tama&ntilde;o de letra y modo de color" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 19</span> Panel de accesibilidad. Las preferencias se guardan en el navegador y se mantienen entre visitas.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">El sitio se adapta a las preferencias indicadas.</p>
+
+      <div class="man-nota man-nota-nota">
+        <span class="man-nota-icono" aria-hidden="true">&#9432;</span>
+        <div><strong>Nota.</strong> El sitio tambi&eacute;n se puede recorrer <strong>&iacute;ntegramente con el teclado</strong>. Pulse <kbd>Tab</kbd> nada m&aacute;s cargar la p&aacute;gina y aparecer&aacute; el enlace <em>Saltar al contenido principal</em>.</div>
+      </div>
+  </section>
+
+  <section class="man-caso" id="CU-20">
+    <div class="man-caso-cab">
+      <span class="man-caso-id">CU-20</span>
+      <h3>Usar el sitio en el tel&eacute;fono</h3>
+    </div>
+
+    <dl class="man-ficha">
+      <div><dt>Actor</dt><dd>Cualquier visitante</dd></div>
+      <div><dt>Objetivo</dt><dd>Consultar el curso desde un dispositivo m&oacute;vil.</dd></div>
+    </dl>
+
+    <h4 class="man-sub">Precondiciones</h4>
+    <ul class="man-precond">
+        <li>Abrir el sitio en el navegador del tel&eacute;fono.</li>
+    </ul>
+
+    <h4 class="man-sub">Procedimiento</h4>
+    <ol class="man-pasos">
+        <li>La cabecera se compacta y el men&uacute; se recoge tras el bot&oacute;n de tres l&iacute;neas (&#9776;), arriba a la derecha.</li>
+        <li>P&uacute;lselo para desplegar la navegaci&oacute;n completa.</li>
+        <li>Las tarjetas y los formularios pasan a una sola columna.</li>
+        <li>En las p&aacute;ginas de tema, el sumario se convierte en una tira horizontal desplazable.</li>
+        <li>Las tablas anchas de iteraciones se desplazan lateralmente <strong>dentro de su propio recuadro</strong>, sin descuadrar la p&aacute;gina.</li>
+    </ol>
+
+    <figure class="man-figura">
+      <img src="capturas/23-movil-inicio.jpg" alt="Vista del sitio en un tel&eacute;fono, con la cabecera compacta y el contenido en una sola columna" loading="lazy" width="1200">
+      <figcaption><span class="man-fig-num">Figura 20</span> Vista m&oacute;vil (390&nbsp;px). El dise&ntilde;o se ha verificado desde 375&nbsp;px hasta 1440&nbsp;px.</figcaption>
+    </figure>
+
+    <h4 class="man-sub">Resultado esperado</h4>
+    <p class="man-resultado">El sitio es plenamente utilizable en el tel&eacute;fono.</p>
+
+
+  </section>
+
+  <!-- ================= 5. PROBLEMAS ================= -->
+  <section class="man-cap" id="cap-5">
+    <p class="section-index"><span class="section-index-num">5</span><span class="section-index-label">Problemas</span></p>
+    <h2>Soluci&oacute;n de problemas frecuentes</h2>
+    <div class="table-wrap">
+      <table class="iter-table">
+        <thead><tr><th>S&iacute;ntoma</th><th>Causa probable</th><th>Soluci&oacute;n</th></tr></thead>
+        <tbody>
+          <tr><td>La p&aacute;gina no carga</td><td>Apache detenido</td><td>Inicie Apache en el panel de XAMPP</td></tr>
+          <tr><td>Se ve sin estilos o desactualizado</td><td>Cach&eacute; del navegador</td><td>Pulse <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>F5</kbd></td></tr>
+          <tr><td>Los juegos no responden</td><td>JavaScript desactivado</td><td>Act&iacute;velo en la configuraci&oacute;n del navegador</td></tr>
+          <tr><td>El progreso aparece en cero</td><td>Navegaci&oacute;n privada o datos del sitio borrados</td><td>El progreso se guarda en el navegador; use una ventana normal</td></tr>
+          <tr><td>Los videos no se ven</td><td>Sin conexi&oacute;n o bloqueo de contenido incrustado</td><td>Use el enlace <em>Ver en YouTube</em></td></tr>
+          <tr><td>El certificado no llega al correo</td><td>Credenciales de env&iacute;o sin configurar</td><td>Descargue el PNG con el otro bot&oacute;n</td></tr>
+          <tr><td>El formulario no env&iacute;a</td><td>Alg&uacute;n campo no es v&aacute;lido</td><td>Revise los campos marcados en rojo (CU-16)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 6. GLOSARIO ================= -->
+  <section class="man-cap" id="cap-6">
+    <p class="section-index"><span class="section-index-num">6</span><span class="section-index-label">Glosario</span></p>
+    <h2>Glosario de t&eacute;rminos</h2>
+    <ul class="ref-list">
+      <li><span class="ref-title">Bloque tem&aacute;tico</span>Cada una de las tres agrupaciones en que se divide el curso: fundamentos y errores, m&eacute;todos iterativos y ecuaciones diferenciales.</li>
+      <li><span class="ref-title">Dominio</span>Porcentaje de preguntas de un bloque que el estudiante ha respondido correctamente al menos una vez.</li>
+      <li><span class="ref-title">Racha</span>N&uacute;mero de aciertos consecutivos dentro de una partida. A partir de tres, multiplica los puntos.</li>
+      <li><span class="ref-title">Repaso inteligente</span>Partida formada &uacute;nicamente por las preguntas que el estudiante ha fallado antes.</li>
+      <li><span class="ref-title">Medalla</span>Distinci&oacute;n que resume el resultado de una partida: bronce, plata, oro o platino.</li>
+      <li><span class="ref-title">Tabla de iteraciones</span>Tabla que muestra, paso a paso, los valores que va calculando un m&eacute;todo num&eacute;rico y su error.</li>
+      <li><span class="ref-title">Sumario lateral</span>&Iacute;ndice de apartados que acompa&ntilde;a a cada p&aacute;gina de tema y resalta la secci&oacute;n en lectura.</li>
+    </ul>
+  </section>
+
+  <div class="detail-actionbar">
+    <a href="index.php#inicio" class="btn btn-ghost">&larr; Volver al inicio</a>
+    <a href="index.php#temas" class="btn btn-primary">Empezar a estudiar &rarr;</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="max-width:900px; margin:0 auto; border-top:none; padding-top:2.4rem;">
+    <span>&copy; <span id="year"></span> M&eacute;todosNum&eacute;ricos. Proyecto acad&eacute;mico de Ingenier&iacute;a de Sistemas.</span>
+    <a href="index.php#contacto">Contacto</a>
+    <a href="proyecto.html">Documentaci&oacute;n del proyecto</a>
+  </div>
+</footer>
+
+<script src="temas/temas.js?v=18"></script>
+<script src="accessibility.js?v=18"></script>
+</body>
+</html>

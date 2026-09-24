@@ -1,0 +1,15 @@
+CAPTURAS DE PANTALLA DEL PROYECTO
+=================================
+
+Guarda aqui las capturas con estos nombres exactos para que aparezcan
+listadas en proyecto.html (seccion 9):
+
+  01-inicio.png          Portada completa en escritorio
+  02-temas.png           Seccion de temas con las tres unidades
+  03-tema-detalle.png    Una pagina de tema con su tabla de iteraciones
+  04-juego.png           Juego de preguntas en curso
+  05-certificado.png     Certificado generado tras aprobar
+  06-movil.png           Vista en telefono con el menu desplegado
+
+Sugerencia: usa PNG y reduce el ancho a 1440 px como maximo para que
+el archivo no pese de mas.

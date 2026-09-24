@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M&eacute;todos multipaso: Adams-Bashforth y Adams-Moulton | M&eacute;todos Num&eacute;ricos</title>
+<meta name="description" content="Metodos multipaso para EDO: Adams-Bashforth, Adams-Moulton, esquema predictor-corrector PECE, tabla resuelta, comparacion con RK4 y codigo Python.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=18">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- ===================== CABECERA ===================== -->
+  <header class="site-header" id="top">
+
+    <!-- Fila 1: barra de utilidades -->
+    <div class="masthead-utility">
+      <div class="masthead-utility-inner">
+        <span class="masthead-course">Aula interactiva &middot; Ingenier&iacute;a de Sistemas</span>
+        <span class="masthead-links">
+          <a href="../manual.html">Manual</a>
+          <a href="../proyecto.html">Proyecto</a>
+          <a href="../index.php#contacto">Contacto</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- Fila 2: mancheta con la marca centrada -->
+    <div class="masthead">
+      <a href="../index.php#inicio" class="masthead-brand" aria-label="Inicio &mdash; M&eacute;todos Num&eacute;ricos">
+        <span class="masthead-rule" aria-hidden="true"></span>
+        <span class="masthead-name">M&eacute;todos<em>Num&eacute;ricos</em></span>
+        <span class="masthead-rule" aria-hidden="true"></span>
+      </a>
+      <p class="masthead-tagline">Fundamentos y errores &middot; M&eacute;todos iterativos &middot; Ecuaciones diferenciales</p>
+    </div>
+
+    <!-- Fila 3: navegación principal (queda fija al hacer scroll) -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a href="../index.php#inicio" class="navbar-compact" aria-hidden="true" tabindex="-1">M&eacute;todos<em>Num&eacute;ricos</em></a>
+
+        <nav class="main-nav" id="mainNav" aria-label="Navegaci&oacute;n principal">
+          <a href="../index.php#inicio">Inicio</a>
+          <div class="nav-dropdown" id="temasDropdown">
+            <button class="nav-dropdown-toggle" id="temasDropdownToggle" aria-expanded="false">
+              Temas
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          <div class="nav-dropdown-menu nav-mega">
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 1 <em>Fundamentos y Teor&iacute;a de Errores</em></span>
+              <a href="metodo-numerico.html"><span class="tag-num">1.1</span> &iquest;Qu&eacute; es un m&eacute;todo num&eacute;rico?</a>
+              <a href="representacion.html"><span class="tag-num">1.2</span> Representaci&oacute;n de n&uacute;meros</a>
+              <a href="punto-flotante.html"><span class="tag-num">1.3</span> Aritm&eacute;tica de punto flotante</a>
+              <a href="errores.html"><span class="tag-num">1.4</span> Errores de redondeo</a>
+              <a href="algoritmos-convergencia.html"><span class="tag-num">1.5</span> Algoritmos y convergencia</a>
+              <a href="python.html"><span class="tag-num">1.6</span> Python para m&eacute;todos num&eacute;ricos</a>
+            </div>
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 2 <em>M&eacute;todos Iterativos y Ra&iacute;ces de Funciones</em></span>
+              <a href="solucion-numerica.html"><span class="tag-num">2.1</span> Soluci&oacute;n num&eacute;rica</a>
+              <a href="convergencia.html"><span class="tag-num">2.2</span> Tasas de convergencia</a>
+              <a href="biseccion.html"><span class="tag-num">2.3</span> M&eacute;todo de bisecci&oacute;n</a>
+              <a href="puntofijo.html"><span class="tag-num">2.4</span> Iteraci&oacute;n de punto fijo</a>
+              <a href="newton.html"><span class="tag-num">2.5</span> M&eacute;todo de Newton</a>
+              <a href="muller.html"><span class="tag-num">2.6</span> M&eacute;todo de Muller</a>
+            </div>
+            <div class="nav-mega-col">
+              <span class="nav-mega-title">Bloque 3 <em>Ecuaciones Diferenciales Ordinarias</em></span>
+              <a href="euler.html"><span class="tag-num">3.1</span> M&eacute;todo de Euler</a>
+              <a href="taylor.html"><span class="tag-num">3.2</span> M&eacute;todo de Taylor</a>
+              <a href="runge-kutta.html"><span class="tag-num">3.3</span> M&eacute;todo de Runge-Kutta</a>
+              <a href="multipaso.html" class="is-current" aria-current="page"><span class="tag-num">3.4</span> M&eacute;todos multipaso</a>
+            </div>
+            <a href="../index.php#temas" class="nav-dropdown-all">Ver el mapa completo de los 16 temas &rarr;</a>
+          </div>
+          </div>
+          <a href="../index.php#juegos">Actividades</a>
+          <a href="../galeria.html">Galer&iacute;a</a>
+          <a href="../index.php#certificacion">Certificaci&oacute;n</a>
+          <a href="../index.php#nosotros">Acerca de</a>
+          <a href="../index.php#bibliografia">Bibliograf&iacute;a</a>
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir men&uacute;">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+<section class="detail-hero">
+  <div class="detail-hero-inner">
+    <p class="breadcrumb"><a href="../index.php#inicio">Inicio</a><span>/</span><a href="../index.php#temas">Temas</a><span>/</span>M&eacute;todos multipaso</p>
+    <h1>M&eacute;todos multipaso</h1>
+    <p class="detail-lead">Reutilizar el historial en vez de tirarlo: orden 4 con la mitad de evaluaciones que Runge-Kutta, a cambio de necesitar un arranque.</p>
+  </div>
+</section>
+
+<main class="detail-body" id="contenido">
+  <div class="detail-layout">
+
+    <aside class="detail-aside">
+      <div class="detail-aside-inner">
+        <p class="detail-aside-title">En esta p&aacute;gina</p>
+        <nav class="detail-toc" id="detailToc" aria-label="Sumario del tema"></nav>
+        <div class="detail-aside-actions">
+          <a href="../index.php#juegos" class="detail-aside-cta">Practicar este tema</a>
+          <a href="../index.php#temas" class="detail-aside-link">Ver los 16 temas</a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="detail-main">
+
+  <h2>Idea central</h2>
+  <p>Euler, Taylor y Runge-Kutta son m&eacute;todos <strong>de un paso</strong>: para calcular y<sub>n+1</sub> solo usan y<sub>n</sub> y tiran a la basura todo lo calculado antes. Los <strong>m&eacute;todos multipaso</strong> hacen lo contrario: aprovechan el historial y<sub>n</sub>, y<sub>n&minus;1</sub>, y<sub>n&minus;2</sub>, &hellip; y sus pendientes ya evaluadas.</p>
+  <p>El resultado es un m&eacute;todo de orden 4 que necesita <strong>una sola evaluaci&oacute;n nueva de f por paso</strong>, frente a las cuatro de RK4. El precio: hay que arrancar con otro m&eacute;todo y el paso h no se cambia f&aacute;cilmente.</p>
+
+  <div class="callout">
+    <h4>El problema de valor inicial que usaremos en toda la unidad</h4>
+    <p><span class="formula">y&prime; = y &minus; t&sup2; + 1</span>, con <span class="formula">y(0) = 0.5</span> en el intervalo [0, 2] y paso <span class="formula">h = 0.2</span>. Su soluci&oacute;n exacta es <span class="formula">y(t) = (t + 1)&sup2; &minus; &frac12;e<sup>t</sup></span>, as&iacute; que podemos comparar el error real de cada m&eacute;todo sobre exactamente el mismo problema.</p>
+  </div>
+
+  <h2>Predictor y corrector</h2>
+  <p>Los m&eacute;todos multipaso se dividen en dos familias que se usan en pareja:</p>
+  <div class="table-wrap">
+    <table class="iter-table">
+      <thead><tr><th>Familia</th><th>Tipo</th><th>F&oacute;rmula de 4 pasos</th><th>Papel</th></tr></thead>
+      <tbody>
+        <tr><td>Adams-Bashforth</td><td>Expl&iacute;cito</td><td>y<sub>n+1</sub> = y<sub>n</sub> + (h/24)(55f<sub>n</sub> &minus; 59f<sub>n&minus;1</sub> + 37f<sub>n&minus;2</sub> &minus; 9f<sub>n&minus;3</sub>)</td><td><strong>Predictor</strong>: estima y<sub>n+1</sub></td></tr>
+        <tr><td>Adams-Moulton</td><td>Impl&iacute;cito</td><td>y<sub>n+1</sub> = y<sub>n</sub> + (h/24)(9f<sub>n+1</sub> + 19f<sub>n</sub> &minus; 5f<sub>n&minus;1</sub> + f<sub>n&minus;2</sub>)</td><td><strong>Corrector</strong>: refina la estimaci&oacute;n</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">Adams-Moulton es impl&iacute;cito porque f<sub>n+1</sub> depende de y<sub>n+1</sub>, el valor que se busca. La soluci&oacute;n pr&aacute;ctica es usar el predictor para estimarlo y luego corregir: es el esquema <strong>PECE</strong> (Predice, Eval&uacute;a, Corrige, Eval&uacute;a).</p>
+
+  <div class="formula-strip">
+    <div><span class="formula-label">Adams-Bashforth de 2 pasos</span><p class="formula">y<sub>n+1</sub> = y<sub>n</sub> + (h/2)(3f<sub>n</sub> &minus; f<sub>n&minus;1</sub>)</p></div>
+    <div><span class="formula-label">Adams-Bashforth de 4 pasos</span><p class="formula">y<sub>n+1</sub> = y<sub>n</sub> + (h/24)(55f<sub>n</sub> &minus; 59f<sub>n&minus;1</sub> + 37f<sub>n&minus;2</sub> &minus; 9f<sub>n&minus;3</sub>)</p></div>
+    <div><span class="formula-label">Adams-Moulton de 3 pasos</span><p class="formula">y<sub>n+1</sub> = y<sub>n</sub> + (h/24)(9f<sub>n+1</sub> + 19f<sub>n</sub> &minus; 5f<sub>n&minus;1</sub> + f<sub>n&minus;2</sub>)</p></div>
+    <div><span class="formula-label">Estimaci&oacute;n del error local</span><p class="formula">|y<sub>corr</sub> &minus; y<sub>pred</sub>| &middot; 19/270</p></div>
+  </div>
+
+  <div class="callout">
+    <h4>El problema del arranque</h4>
+    <p>Un m&eacute;todo de 4 pasos necesita y&#8320;, y&#8321;, y&#8322;, y&#8323; para dar el primer paso, pero la condici&oacute;n inicial solo aporta y&#8320;. La soluci&oacute;n est&aacute;ndar es <strong>arrancar con RK4</strong>, que es autoiniciable y del mismo orden, y cambiar a multipaso a partir de ah&iacute;.</p>
+  </div>
+
+  <h2>Algoritmo (predictor-corrector de cuarto orden)</h2>
+  <ol class="algo-steps">
+    <li><strong>Arranque:</strong> calcular y&#8321;, y&#8322;, y&#8323; con Runge-Kutta de cuarto orden.</li>
+    <li><strong>Predice (P):</strong> aplicar Adams-Bashforth de 4 pasos para obtener una estimaci&oacute;n y<sup>*</sup><sub>n+1</sub>.</li>
+    <li><strong>Eval&uacute;a (E):</strong> calcular f(t<sub>n+1</sub>, y<sup>*</sup><sub>n+1</sub>).</li>
+    <li><strong>Corrige (C):</strong> aplicar Adams-Moulton de 3 pasos usando esa evaluaci&oacute;n.</li>
+    <li><strong>Eval&uacute;a (E):</strong> recalcular f con el valor corregido, listo para el siguiente paso.</li>
+    <li>Estimar el error local con la diferencia entre predictor y corrector; si es excesivo, reducir h y reiniciar el arranque.</li>
+  </ol>
+
+  <h2>Videos recomendados</h2>
+  <p class="section-hint">Dos explicaciones distintas del mismo tema: si una no te encaja, prueba la otra.</p>
+  <div class="video-grid">
+    <figure class="video-card">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/oHsI-kSmI_k" title="M&eacute;todo Adams-Bashforth (multipaso) con c&oacute;digo"
+                loading="lazy" allowfullscreen
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <figcaption>
+        <h4>M&eacute;todo Adams-Bashforth (multipaso) con c&oacute;digo</h4>
+        <p class="video-meta">Hector Camargo &middot; 5:26</p>
+        <p>La f&oacute;rmula del predictor explicada junto con su implementaci&oacute;n.</p>
+        <a href="https://www.youtube.com/watch?v=oHsI-kSmI_k" target="_blank" rel="noopener">Ver en YouTube &rarr;</a>
+      </figcaption>
+    </figure>
+
+    <figure class="video-card">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/NYETQYPfoZQ" title="Predictor-corrector Adams-Bashforth-Moulton de 4 pasos"
+                loading="lazy" allowfullscreen
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <figcaption>
+        <h4>Predictor-corrector Adams-Bashforth-Moulton de 4 pasos</h4>
+        <p class="video-meta">John A. Aristizabal &middot; 9:59</p>
+        <p>El esquema completo, incluido el arranque con Runge-Kutta.</p>
+        <a href="https://www.youtube.com/watch?v=NYETQYPfoZQ" target="_blank" rel="noopener">Ver en YouTube &rarr;</a>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h2>Ejercicio resuelto</h2>
+  <div class="exercise-box">
+    <p>Mismo problema: <span class="formula">y&prime; = y &minus; t&sup2; + 1</span>, y(0) = 0.5, h = 0.2. Los cuatro primeros valores vienen de RK4 y a partir de ah&iacute; se aplica el esquema predictor-corrector.</p>
+  <div class="table-wrap">
+    <table class="iter-table">
+      <thead><tr><th>n</th><th>t<sub>n</sub></th><th>Predictor (A-B 4)</th><th>Corrector (A-M 3)</th><th>y(t<sub>n</sub>) exacta</th><th>Error</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>0.0</td><td>&mdash;</td><td>0.5000000</td><td>0.5000000</td><td>0.00e+00</td></tr>
+        <tr><td>1</td><td>0.2</td><td>&mdash;</td><td>0.8292933</td><td>0.8292986</td><td>5.29e-06</td></tr>
+        <tr><td>2</td><td>0.4</td><td>&mdash;</td><td>1.2140762</td><td>1.2140877</td><td>1.14e-05</td></tr>
+        <tr><td>3</td><td>0.6</td><td>&mdash;</td><td>1.6489220</td><td>1.6489406</td><td>1.86e-05</td></tr>
+        <tr><td>4</td><td>0.8</td><td>2.1272892</td><td>2.1272056</td><td>2.1272295</td><td>2.39e-05</td></tr>
+        <tr><td>5</td><td>1.0</td><td>2.6409314</td><td>2.6408286</td><td>2.6408591</td><td>3.05e-05</td></tr>
+        <tr><td>6</td><td>1.2</td><td>3.1800275</td><td>3.1799026</td><td>3.1799415</td><td>3.89e-05</td></tr>
+        <tr><td>7</td><td>1.4</td><td>3.7325032</td><td>3.7323505</td><td>3.7324000</td><td>4.95e-05</td></tr>
+        <tr><td>8</td><td>1.6</td><td>4.2836074</td><td>4.2834208</td><td>4.2834838</td><td>6.30e-05</td></tr>
+        <tr><td>9</td><td>1.8</td><td>4.8153242</td><td>4.8150964</td><td>4.8151763</td><td>7.99e-05</td></tr>
+        <tr><td>10</td><td>2.0</td><td>5.3056490</td><td>5.3053707</td><td>5.3054720</td><td>1.01e-04</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">Las cuatro primeras filas son el arranque con RK4 (por eso no tienen predictor). La diferencia entre predictor y corrector sirve, adem&aacute;s, como estimaci&oacute;n gratuita del error local.</p>
+  </div>
+
+  <h2>M&eacute;todos de un paso frente a multipaso</h2>
+  <div class="table-wrap">
+    <table class="iter-table">
+      <thead><tr><th>Aspecto</th><th>Un paso (RK4)</th><th>Multipaso (Adams orden 4)</th></tr></thead>
+      <tbody>
+        <tr><td>Evaluaciones de f por paso</td><td>4</td><td>2 (predictor + corrector)</td></tr>
+        <tr><td>&iquest;Necesita arranque?</td><td>No, es autoiniciable</td><td>S&iacute;, requiere 4 valores previos</td></tr>
+        <tr><td>&iquest;Cambiar h es sencillo?</td><td>S&iacute;, en cualquier momento</td><td>No, obliga a reiniciar el arranque</td></tr>
+        <tr><td>Estimaci&oacute;n del error</td><td>Necesita un par encajado (RK45)</td><td>Gratis: |corrector &minus; predictor|</td></tr>
+        <tr><td>Uso de memoria</td><td>M&iacute;nimo</td><td>Guarda el historial de pendientes</td></tr>
+        <tr><td>Cu&aacute;ndo conviene</td><td>Uso general, f barata, paso variable</td><td>Intervalos largos con f cara y paso fijo</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">Regla pr&aacute;ctica: si evaluar f es caro y el intervalo es largo, los multipaso ganan; si f es barata o hace falta paso adaptativo, gana Runge-Kutta.</p>
+
+  <div class="code-block">
+    <div class="code-block-head">Predictor-corrector de cuarto orden en Python</div>
+    <pre><code>import math
+
+def rk4_paso(f, t, y, h):
+    k1 = h * f(t,       y)
+    k2 = h * f(t + h/2, y + k1/2)
+    k3 = h * f(t + h/2, y + k2/2)
+    k4 = h * f(t + h,   y + k3)
+    return y + (k1 + 2*k2 + 2*k3 + k4) / 6
+
+
+def adams_pece(f, t0, y0, h, n):
+    """Adams-Bashforth 4 (predictor) + Adams-Moulton 3 (corrector)."""
+    ts, ys = [t0], [y0]
+    # 1. Arranque con RK4: hacen falta 4 valores
+    for _ in range(3):
+        ys.append(rk4_paso(f, ts[-1], ys[-1], h))
+        ts.append(ts[-1] + h)
+
+    # 2. Bucle predictor-corrector
+    for i in range(3, n):
+        f0 = f(ts[i],   ys[i])       # f_n
+        f1 = f(ts[i-1], ys[i-1])     # f_{n-1}
+        f2 = f(ts[i-2], ys[i-2])     # f_{n-2}
+        f3 = f(ts[i-3], ys[i-3])     # f_{n-3}
+        t_next = ts[i] + h
+
+        # P: predictor explicito (Adams-Bashforth)
+        yp = ys[i] + h/24 * (55*f0 - 59*f1 + 37*f2 - 9*f3)
+        # E: evaluar en el punto predicho
+        fp = f(t_next, yp)
+        # C: corrector implicito (Adams-Moulton)
+        yc = ys[i] + h/24 * (9*fp + 19*f0 - 5*f1 + f2)
+
+        error_estimado = abs(yc - yp) * 19/270    # gratis
+        ts.append(t_next)
+        ys.append(yc)
+    return ts, ys
+
+
+f = lambda t, y: y - t**2 + 1
+exacta = lambda t: (t + 1)**2 - 0.5 * math.exp(t)
+ts, ys = adams_pece(f, 0.0, 0.5, 0.2, 10)
+for t, y in zip(ts, ys):
+    print(f"{t:.1f}  {y:.7f}  error={abs(exacta(t)-y):.2e}")</code></pre>
+  </div>
+
+  <h2>Ventajas y desventajas</h2>
+  <div class="pros-cons-grid">
+    <div class="pros">
+      <h4>Ventajas</h4>
+      <ul>
+        <li>Solo una o dos evaluaciones nuevas de f por paso, frente a las cuatro de RK4.</li>
+        <li>Muy eficiente cuando evaluar f es costoso y el intervalo es largo.</li>
+        <li>La diferencia predictor-corrector da una estimaci&oacute;n del error sin costo adicional.</li>
+        <li>Los correctores impl&iacute;citos (Adams-Moulton, BDF) tienen mejores propiedades de estabilidad.</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>Desventajas</h4>
+      <ul>
+        <li>No son autoiniciables: hay que arrancar con un m&eacute;todo de un paso.</li>
+        <li>Cambiar el tama&ntilde;o de paso obliga a repetir el arranque o a interpolar el historial.</li>
+        <li>Necesitan almacenar el historial de pendientes.</li>
+        <li>Son menos estables que RK4 si el paso se elige mal, y hay f&oacute;rmulas multipaso directamente inestables.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Aplicaciones t&iacute;picas en ingenier&iacute;a</h2>
+  <div class="apps-grid">
+    <div><span class="app-icon">01</span><h4>Astrodin&aacute;mica</h4><p>Propagaci&oacute;n de &oacute;rbitas durante a&ntilde;os simulados, donde ahorrar evaluaciones es decisivo.</p></div>
+    <div><span class="app-icon">02</span><h4>Simulaci&oacute;n de circuitos</h4><p>SPICE usa f&oacute;rmulas BDF, que son multipaso impl&iacute;citas, para circuitos r&iacute;gidos.</p></div>
+    <div><span class="app-icon">03</span><h4>Din&aacute;mica molecular</h4><p>Integradores multipaso para trayectorias con millones de pasos de tiempo.</p></div>
+    <div><span class="app-icon">04</span><h4>Meteorolog&iacute;a</h4><p>Modelos de predicci&oacute;n donde cada evaluaci&oacute;n del campo es enormemente costosa.</p></div>
+  </div>
+
+  <h2>Errores comunes</h2>
+  <ul class="common-errors">
+    <li><strong>Arrancar el multipaso con Euler.</strong> Si los valores de arranque tienen error O(h), contaminan todo el c&aacute;lculo y el m&eacute;todo nunca alcanza su orden 4. Hay que arrancar con RK4.</li>
+    <li><strong>Confundir el orden de los &iacute;ndices.</strong> En Adams-Bashforth, el coeficiente 55 acompa&ntilde;a a f<sub>n</sub> (el m&aacute;s reciente) y &minus;9 a f<sub>n&minus;3</sub> (el m&aacute;s antiguo). Invertirlos destruye el resultado.</li>
+    <li><strong>Cambiar h a mitad de camino.</strong> El historial guardado corresponde al paso anterior; cambiar h sin reiniciar el arranque introduce un error grande.</li>
+    <li><strong>Iterar el corrector muchas veces.</strong> Con una sola correcci&oacute;n basta. Iterar hasta convergencia gasta evaluaciones y elimina justamente la ventaja del m&eacute;todo.</li>
+  </ul>
+
+  <h2>Banco de ejercicios propuestos</h2>
+  <p class="section-hint">Ten a mano las f&oacute;rmulas de Adams-Bashforth y Adams-Moulton.</p>
+  <div class="proposed-exercises">
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">1. Aplica Adams-Bashforth de 2 pasos a y&prime; = y, con y&#8320; = 1, y&#8321; = 1.105171 (h = 0.1). Calcula y&#8322;.</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p>f&#8321; = y&#8321; = 1.105171; f&#8320; = y&#8320; = 1.</p>
+        <p>y&#8322; = y&#8321; + (h/2)(3f&#8321; &minus; f&#8320;) = 1.105171 + 0.05(3&middot;1.105171 &minus; 1)</p>
+        <p>= 1.105171 + 0.05(3.315513 &minus; 1) = 1.105171 + 0.115776 = 1.220947</p>
+        <p>Valor exacto: e<sup>0.2</sup> = 1.221403.</p>
+        <span class="ex-answer">Respuesta: y&#8322; &asymp; 1.220947, con un error de 4.6 &times; 10<sup>&minus;4</sup>.</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">2. &iquest;Por qu&eacute; Adams-Moulton se llama impl&iacute;cito?</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p>Su f&oacute;rmula incluye el t&eacute;rmino 9f<sub>n+1</sub> = 9f(t<sub>n+1</sub>, y<sub>n+1</sub>).</p>
+        <p>Es decir, el valor buscado y<sub>n+1</sub> aparece a ambos lados de la igualdad.</p>
+        <p>Para despejarlo har&iacute;a falta resolver una ecuaci&oacute;n no lineal en cada paso (por ejemplo con Newton).</p>
+        <p>El esquema predictor-corrector evita ese costo estimando y<sub>n+1</sub> con Adams-Bashforth.</p>
+        <span class="ex-answer">Respuesta: Porque la inc&oacute;gnita y<sub>n+1</sub> aparece dentro de f en el lado derecho de la f&oacute;rmula.</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">3. Cuenta las evaluaciones de f de RK4 y de Adams PECE para 1000 pasos.</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p>RK4: 4 evaluaciones por paso &times; 1000 = 4000 evaluaciones.</p>
+        <p>Adams PECE: 2 evaluaciones por paso (una del predictor, una del corrector) &times; 1000 &asymp; 2000, m&aacute;s 12 del arranque con RK4.</p>
+        <p>Ahorro de aproximadamente el 50 % del trabajo.</p>
+        <span class="ex-answer">Respuesta: RK4: 4000; Adams PECE: unas 2012 &mdash; casi la mitad.</span>
+      </div>
+    </details>
+
+    <details class="proposed-exercise">
+      <summary><span class="ex-statement">4. Con h = 0.2, el predictor da 1.7 y el corrector 1.702. Estima el error local.</span><span class="ex-reveal-btn">&iquest;Ver ejercicio resuelto?</span></summary>
+      <div class="ex-solution">
+        <p>La estimaci&oacute;n del error local del m&eacute;todo de cuarto orden es |y<sub>c</sub> &minus; y<sub>p</sub>| &middot; 19/270.</p>
+        <p>|1.702 &minus; 1.7| = 0.002.</p>
+        <p>0.002 &times; 19/270 = 0.002 &times; 0.0704 = 1.41 &times; 10<sup>&minus;4</sup>.</p>
+        <span class="ex-answer">Respuesta: Aproximadamente 1.4 &times; 10<sup>&minus;4</sup>; si esa cota supera la tolerancia, hay que reducir h.</span>
+      </div>
+    </details>
+
+  </div>
+
+  <h2>Fuentes acad&eacute;micas para profundizar</h2>
+  <ul class="source-links">
+    <li><a href="https://math.libretexts.org/Workbench/Numerical_Methods_with_Applications_(Kaw)/8%3A_Ordinary_Differential_Equations" target="_blank" rel="noopener">LibreTexts &mdash; Ordinary Differential Equations (Autar Kaw)</a><span>Cap&iacute;tulo abierto con m&eacute;todos multipaso y esquemas predictor-corrector.</span></li>
+    <li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html" target="_blank" rel="noopener">SciPy &mdash; m&eacute;todos <code>LSODA</code> y <code>BDF</code> de <code>solve_ivp</code></a><span>Implementaciones industriales de m&eacute;todos multipaso con paso y orden adaptativos.</span></li>
+    <li><a href="https://scholar.google.com/scholar?q=adams+bashforth+moulton+predictor+corrector+stability" target="_blank" rel="noopener">Google Acad&eacute;mico &mdash; &laquo;adams bashforth moulton predictor corrector&raquo;</a><span>Art&iacute;culos sobre estabilidad y convergencia de las f&oacute;rmulas multipaso.</span></li>
+  </ul>
+
+  <h2>Para profundizar (bibliograf&iacute;a)</h2>
+  <ul class="ref-list">
+    <li><span class="ref-title">Burden, R. L. &amp; Faires, J. D. &mdash; Numerical Analysis</span>Secci&oacute;n 5.6, &laquo;Multistep Methods&raquo;, con las f&oacute;rmulas de Adams-Bashforth y Adams-Moulton deducidas paso a paso.</li>
+    <li><span class="ref-title">Chapra, S. C. &amp; Canale, R. P. &mdash; M&eacute;todos num&eacute;ricos para ingenieros</span>Cap&iacute;tulo 26, &laquo;M&eacute;todos r&iacute;gidos y de pasos m&uacute;ltiples&raquo;.</li>
+    <li><span class="ref-title">Hairer, N&oslash;rsett &amp; Wanner &mdash; Solving Ordinary Differential Equations I</span>Referencia definitiva sobre m&eacute;todos multipaso, su orden y sus regiones de estabilidad.</li>
+  </ul>
+
+  <div class="detail-actionbar">
+    <a href="../index.php" class="btn btn-ghost">&larr; Volver a la p&aacute;gina principal</a>
+    <a href="../index.php#juegos" class="btn btn-primary">Resolver preguntas de este tema &rarr;</a>
+  </div>
+
+    </div>
+  </div>
+
+  <div class="topic-crossnav">
+    <a href="runge-kutta.html">&larr; Anterior: M&eacute;todo de Runge-Kutta</a>
+    <a href="../index.php#temas">Ver todos los temas</a>
+    <a href="../index.php#juegos">Siguiente: Poner a prueba lo aprendido &rarr;</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="max-width:900px; margin:0 auto; border-top:none; padding-top:2.4rem;">
+    <span>&copy; <span id="year"></span> M&eacute;todosNum&eacute;ricos. Proyecto acad&eacute;mico de Ingenier&iacute;a de Sistemas.</span>
+    <a href="../index.php#contacto">Contacto</a>
+    <a href="../proyecto.html">Documentaci&oacute;n del proyecto</a>
+  </div>
+</footer>
+
+<script src="temas.js?v=18"></script>
+<script src="../accessibility.js?v=18"></script>
+</body>
+</html>
